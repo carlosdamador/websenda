@@ -1,0 +1,32 @@
+{
+  "masajes": {
+    "relajante": "$45.000",
+    "descontracturante": "$45.000",
+    "bambu": "$50.000",
+    "parejas": "$80.000",
+    "deportivo": "$45.000",
+    "stretching": "$45.000",
+    "spa": "$45.000",
+    "4manos": "$65.000",
+    "reductivo": "$45.000",
+    "prenatal": "$45.000",
+    "drenaje": "$45.000",
+    "clases": "Desde $55.000",
+    "pack5": "$200.000",
+    "90min": "$65.000",
+    "parejas-destacado": "$80.000"
+  },
+  "escuela": {
+    "clase-parejas": "$70.000",
+    "clase-individual": "$55.000",
+    "clase-grupal": "$40.000",
+    "curso-profesional": "Desde $180.000",
+    "nivel1-ind": "$180.000",
+    "nivel1-par": "$220.000",
+    "nivel2-ind": "$290.000",
+    "nivel2-par": "$350.000",
+    "nivel3-ind": "$450.000",
+    "nivel3-par": "$540.000",
+    "anatomia": "+$90.000"
+  }
+}

@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Escuela de Masajes SENDA — Carlos enseña técnicas profesionales a domicilio. Clases para parejas, individuales y cursos completos con anatomía. Zona Norte y CABA.">
+  <title>SENDA · Escuela de Masajes · Clases a Domicilio · Carlos</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --negro: #0A0705;
+      --bosque: #111C16;
+      --verde: #1B3025;
+      --musgo: #2D4A35;
+      --oro: #B8952A;
+      --oro-luz: #D4AF50;
+      --crema: #F0E8D5;
+      --humo: #C8B99A;
+      --bambu: #8A7250;
+      --blanco: #FAF7F2;
+      --tierra: #3D2B1A;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--negro);
+      color: var(--crema);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CURSOR */
+    .cursor {
+      width: 8px;
+      height: 8px;
+      background: var(--oro);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+    }
+
+    .cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(184, 149, 42, .4);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: all .12s ease-out;
+    }
+
+    /* GRAIN */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: .03;
+      pointer-events: none;
+      z-index: 9997;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 60px;
+      transition: background .4s, padding .4s;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 7, 5, .88);
+      backdrop-filter: blur(20px);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(184, 149, 42, .12);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      transition: opacity .3s;
+    }
+
+    .nav-logo:hover img {
+      opacity: .85;
+    }
+
+    .nav-back {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(240, 232, 213, .4);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color .3s;
+    }
+
+    .nav-back:hover {
+      color: var(--oro);
+    }
+
+    .nav-cta {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--negro);
+      background: var(--oro);
+      padding: 12px 28px;
+      text-decoration: none;
+      transition: background .3s;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .nav-cta:hover {
+      background: var(--oro-luz);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 100px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 80% 40%, rgba(27, 48, 37, .6) 0%, transparent 70%),
+        linear-gradient(160deg, #0A0705 0%, #0d1610 60%, #111C16 100%);
+    }
+
+    .hero-img {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: brightness(.5) saturate(.8);
+    }
+
+    .hero-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--negro) 0%, transparent 40%);
+      z-index: 1;
+    }
+
+    .hero-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--negro) 0%, transparent 40%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 60px;
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp .8s ease .3s forwards;
+    }
+
+    .hero-eyebrow-line {
+      width: 50px;
+      height: 1px;
+      background: var(--oro);
+    }
+
+    .hero-eyebrow span {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--oro);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 300;
+      font-size: clamp(56px, 9vw, 110px);
+      line-height: .9;
+      color: var(--crema);
+      letter-spacing: -2px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp .9s ease .5s forwards;
+    }
+
+    h1 em {
+      display: block;
+      font-style: italic;
+      color: var(--oro);
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--oro), transparent);
+      margin: 32px 0;
+      opacity: 0;
+      animation: fadeUp .8s ease .8s forwards;
+    }
+
+    .hero-lead {
+      font-size: 17px;
+      color: rgba(240, 232, 213, .55);
+      line-height: 1.9;
+      max-width: 480px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp .8s ease .9s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp .8s ease 1.1s forwards;
+      flex-wrap: wrap;
+    }
+
+    .btn-oro {
+      display: inline-block;
+      background: var(--oro);
+      color: var(--negro);
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 44px;
+      font-weight: 500;
+      font-family: 'Raleway', sans-serif;
+      transition: background .3s, transform .2s;
+    }
+
+    .btn-oro:hover {
+      background: var(--oro-luz);
+      transform: translateY(-2px);
+    }
+
+    .btn-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(240, 232, 213, .4);
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .btn-line:hover {
+      color: var(--crema);
+    }
+
+    .btn-line::after {
+      content: '→';
+      transition: transform .3s;
+    }
+
+    .btn-line:hover::after {
+      transform: translateX(6px);
+    }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      background: var(--oro);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 25s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-track span {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--negro);
+      font-weight: 500;
+      padding: 0 36px;
+    }
+
+    .marquee-track .sep {
+      color: rgba(10, 7, 5, .3);
+      padding: 0;
+    }
+
+    /* SECTIONS */
+    .sec {
+      padding: 120px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .sec-full {
+      padding: 120px 60px;
+    }
+
+    .sec-dark {
+      background: var(--bosque);
+    }
+
+    .sec-verde {
+      background: var(--verde);
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--oro);
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 300;
+      color: var(--crema);
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+
+    h2 em {
+      font-style: italic;
+      color: var(--oro);
+    }
+
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--crema);
+      margin: 48px 0 20px;
+    }
+
+    p {
+      font-size: 15px;
+      color: rgba(240, 232, 213, .55);
+      line-height: 1.9;
+      margin-bottom: 14px;
+      max-width: 680px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(184, 149, 42, .2), transparent);
+    }
+
+    /* POR QUE */
+    .porq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin-top: 60px;
+    }
+
+    .porq-card {
+      background: var(--bosque);
+      padding: 52px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+
+    .porq-card:hover {
+      background: var(--verde);
+    }
+
+    .porq-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--oro);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s ease;
+    }
+
+    .porq-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .porq-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 300;
+      color: rgba(184, 149, 42, .07);
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      line-height: 1;
+    }
+
+    .porq-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--crema);
+      margin-bottom: 12px;
+    }
+
+    .porq-text {
+      font-size: 13px;
+      color: rgba(240, 232, 213, .45);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* MODALIDADES */
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 60px;
+    }
+
+    .modal-card {
+      padding: 52px 48px;
+      border: 1px solid rgba(184, 149, 42, .15);
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s, background .3s;
+    }
+
+    .modal-card:hover {
+      border-color: rgba(184, 149, 42, .4);
+      background: rgba(27, 48, 37, .3);
+    }
+
+    .modal-card.featured {
+      border-color: var(--oro);
+      background: rgba(184, 149, 42, .04);
+    }
+
+    .modal-card.featured::before {
+      content: 'PRODUCTO ESTRELLA';
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--oro);
+      color: var(--negro);
+      font-size: 9px;
+      letter-spacing: 2px;
+      padding: 6px 16px;
+      font-weight: 600;
+    }
+
+    .modal-tag {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--oro);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .modal-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 300;
+      color: var(--crema);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .modal-desc {
+      font-size: 14px;
+      color: rgba(240, 232, 213, .45);
+      line-height: 1.9;
+      margin-bottom: 32px;
+      max-width: 100%;
+    }
+
+    .modal-includes {
+      border-top: 1px solid rgba(184, 149, 42, .15);
+      padding-top: 24px;
+      margin-bottom: 32px;
+    }
+
+    .modal-includes-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(240, 232, 213, .25);
+      margin-bottom: 12px;
+    }
+
+    .modal-includes li {
+      font-size: 13px;
+      color: rgba(240, 232, 213, .5);
+      list-style: none;
+      padding: 5px 0 5px 18px;
+      position: relative;
+    }
+
+    .modal-includes li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--oro);
+      opacity: .6;
+    }
+
+    .modal-precio {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--oro);
+      line-height: 1;
+    }
+
+    .modal-precio small {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: rgba(240, 232, 213, .25);
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* CURSOS */
+    .cursos-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    .curso-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 48px;
+      align-items: start;
+      padding: 52px 0;
+      border-bottom: 1px solid rgba(184, 149, 42, .1);
+      transition: background .3s;
+    }
+
+    .curso-item:last-child {
+      border-bottom: none;
+    }
+
+    .curso-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 300;
+      color: rgba(184, 149, 42, .12);
+      line-height: 1;
+      padding-top: 8px;
+    }
+
+    .curso-info {}
+
+    .curso-nivel {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--oro);
+      margin-bottom: 12px;
+    }
+
+    .curso-nombre {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--crema);
+      margin-bottom: 12px;
+    }
+
+    .curso-duracion {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: rgba(240, 232, 213, .3);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .curso-temas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tema-tag {
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: rgba(240, 232, 213, .4);
+      border: 1px solid rgba(184, 149, 42, .15);
+      padding: 4px 14px;
+    }
+
+    .curso-precio-col {
+      text-align: right;
+      padding-top: 8px;
+    }
+
+    .cp-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 300;
+      color: var(--oro);
+      white-space: nowrap;
+    }
+
+    .cp-note {
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: rgba(240, 232, 213, .25);
+      margin-top: 4px;
+    }
+
+    .cp-btn {
+      display: inline-block;
+      margin-top: 16px;
+      background: transparent;
+      border: 1px solid rgba(184, 149, 42, .3);
+      color: var(--oro);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-family: 'Raleway', sans-serif;
+      transition: background .3s, border-color .3s;
+    }
+
+    .cp-btn:hover {
+      background: rgba(184, 149, 42, .1);
+      border-color: var(--oro);
+    }
+
+    /* ANATOMIA BANNER */
+    .anatomia-banner {
+      margin: 60px 60px 0;
+      max-width: 1080px;
+      background: var(--verde);
+      border: 1px solid rgba(184, 149, 42, .25);
+      padding: 52px 60px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .ab-left .eyebrow {
+      margin-bottom: 12px;
+    }
+
+    .ab-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--crema);
+      margin-bottom: 12px;
+    }
+
+    .ab-title em {
+      font-style: italic;
+      color: var(--oro);
+    }
+
+    .ab-desc {
+      font-size: 14px;
+      color: rgba(240, 232, 213, .45);
+      line-height: 1.8;
+      margin: 0;
+      max-width: 480px;
+    }
+
+    .ab-right {
+      text-align: center;
+    }
+
+    .ab-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--oro);
+      white-space: nowrap;
+    }
+
+    .ab-note {
+      font-size: 12px;
+      color: rgba(240, 232, 213, .3);
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    /* PUBLICOS */
+    .pub-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+
+    .pub-card {
+      background: var(--bosque);
+      padding: 40px 32px;
+      transition: background .3s;
+    }
+
+    .pub-card:hover {
+      background: var(--verde);
+    }
+
+    .pub-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--crema);
+      margin-bottom: 12px;
+    }
+
+    .pub-desc {
+      font-size: 13px;
+      color: rgba(240, 232, 213, .4);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* TABLA COMPARATIVA */
+    .tabla {
+      margin-top: 60px;
+      width: 100%;
+    }
+
+    .tabla-header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 20px;
+      padding: 16px 32px;
+      background: var(--musgo);
+    }
+
+    .tabla-header span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(240, 232, 213, .3);
+    }
+
+    .tabla-header span.hl {
+      color: var(--oro);
+    }
+
+    .tabla-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 20px;
+      padding: 24px 32px;
+      border-bottom: 1px solid rgba(184, 149, 42, .08);
+      align-items: center;
+      transition: background .2s;
+    }
+
+    .tabla-row:hover {
+      background: rgba(27, 48, 37, .4);
+    }
+
+    .tr-service {
+      font-size: 14px;
+      color: var(--crema);
+    }
+
+    .tr-service small {
+      display: block;
+      font-size: 12px;
+      color: rgba(240, 232, 213, .3);
+      margin-top: 2px;
+    }
+
+    .tr-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: rgba(240, 232, 213, .5);
+    }
+
+    .tr-val.oro {
+      color: var(--oro);
+    }
+
+    .tr-esfuerzo {
+      font-size: 12px;
+      color: rgba(240, 232, 213, .3);
+    }
+
+    /* MENSAJES */
+    .msg-box {
+      border: 1px solid rgba(184, 149, 42, .15);
+      padding: 40px 48px;
+      margin: 24px 0;
+      position: relative;
+      background: rgba(11, 16, 11, .4);
+      transition: border-color .3s;
+    }
+
+    .msg-box:hover {
+      border-color: rgba(184, 149, 42, .35);
+    }
+
+    .msg-label {
+      position: absolute;
+      top: -11px;
+      left: 24px;
+      background: var(--negro);
+      padding: 0 10px;
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--oro);
+    }
+
+    .msg-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-style: italic;
+      color: var(--crema);
+      line-height: 1.8;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    /* FOTO GALERIA */
+    .galeria {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4px;
+      height: 420px;
+    }
+
+    .gal-item {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gal-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: brightness(.65) saturate(.85);
+      transition: filter .5s, transform .6s;
+      display: block;
+    }
+
+    .gal-item:hover img {
+      filter: brightness(.8) saturate(1);
+      transform: scale(1.04);
+    }
+
+    .gal-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 20px 16px;
+      background: linear-gradient(to top, rgba(10, 7, 5, .75), transparent);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(240, 232, 213, .5);
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 160px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: 'SENDA';
+      font-family: 'Playfair Display', serif;
+      font-size: 280px;
+      font-weight: 700;
+      color: rgba(184, 149, 42, .02);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section p {
+      position: relative;
+      z-index: 1;
+      margin: 0 auto 52px;
+      text-align: center;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #25D366;
+      color: white;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 20px 48px;
+      font-weight: 500;
+      font-family: 'Raleway', sans-serif;
+      transition: background .3s, transform .2s;
+    }
+
+    .btn-wa:hover {
+      background: #20b858;
+      transform: translateY(-3px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--negro);
+      padding: 60px;
+      border-top: 1px solid rgba(184, 149, 42, .1);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-logo img {
+      height: 52px;
+      width: auto;
+    }
+
+    .footer-info {
+      text-align: center;
+    }
+
+    .footer-info p {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: rgba(240, 232, 213, .2);
+      margin: 3px 0;
+      text-transform: uppercase;
+      text-align: center;
+      max-width: 100%;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(240, 232, 213, .25);
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--oro);
+    }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .15s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .3s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: .45s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    @media(max-width:900px) {
+      nav {
+        padding: 24px 24px;
+      }
+
+      nav.scrolled {
+        padding: 16px 24px;
+      }
+
+      .hero-img {
+        width: 100%;
+        opacity: .3;
+      }
+
+      .hero-content {
+        padding: 120px 24px 60px;
+      }
+
+      .sec {
+        padding: 80px 24px;
+      }
+
+      .sec-full {
+        padding: 80px 24px;
+      }
+
+      .porq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pub-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .curso-item {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .curso-num {
+        display: none;
+      }
+
+      .cp-amount {
+        text-align: left;
+      }
+
+      .anatomia-banner {
+        grid-template-columns: 1fr;
+        margin: 40px 24px 0;
+      }
+
+      .ab-right {
+        text-align: left;
+      }
+
+      .cursos-wrap {
+        padding: 0 24px;
+      }
+
+      .galeria {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .gal-item {
+        height: 260px;
+      }
+
+      .tabla-header,
+      .tabla-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tabla-header span:nth-child(3),
+      .tabla-header span:nth-child(4),
+      .tabla-row .tr-esfuerzo,
+      .tabla-row .tr-val:last-child {
+        display: none;
+      }
+
+      .cta-section {
+        padding: 100px 24px;
+      }
+
+      .anatomia-banner {
+        padding: 40px 32px;
+      }
+    }
+
+    /* ═══ FLOATING WHATSAPP ═══ */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, .4);
+      cursor: pointer;
+      transition: transform .3s, box-shadow .3s;
+      animation: waPulse 2s infinite;
+    }
+
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(37, 211, 102, .6);
+    }
+
+    .wa-float svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+
+    @keyframes waPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, .4);
+      }
+
+      50% {
+        box-shadow: 0 4px 30px rgba(37, 211, 102, .7);
+      }
+    }
+
+    /* ═══ LIGHTBOX ═══ */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0, 0, 0, .92);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .4s ease, visibility .4s ease;
+      cursor: pointer;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-img {
+      max-width: 85vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, .6);
+      transform: scale(.9);
+      transition: transform .4s cubic-bezier(.16, 1, .3, 1);
+      cursor: default;
+    }
+
+    .lightbox.active .lightbox-img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 28px;
+      right: 32px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(240, 232, 213, .2);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--crema);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .3s, background .3s;
+    }
+
+    .lightbox-close:hover {
+      border-color: var(--oro);
+      background: rgba(184, 149, 42, .15);
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(240, 232, 213, .5);
+      pointer-events: none;
+    }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(240, 232, 213, .15);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--crema);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .3s, background .3s;
+    }
+
+    .lightbox-arrow:hover {
+      border-color: var(--oro);
+      background: rgba(184, 149, 42, .15);
+    }
+
+    .lightbox-prev {
+      left: 24px;
+    }
+
+    .lightbox-next {
+      right: 24px;
+    }
+
+    .gal-item {
+      cursor: pointer;
+    }
+
+    .gal-item img {
+      transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .gal-item:hover img {
+      transform: scale(1.05);
+    }
+
+    @media(max-width: 900px) {
+      .lightbox-img {
+        max-width: 95vw;
+        max-height: 70vh;
+      }
+
+      .lightbox-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+      }
+
+      .lightbox-prev {
+        left: 12px;
+      }
+
+      .lightbox-next {
+        right: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="senda_web.html" class="nav-back">&larr; Volver</a>
+    <a href="senda_web.html" class="nav-logo"><img src="logo_senda.jpg" alt="SENDA — Masajes a Domicilio | Escuela"></a>
+    <a href="https://wa.me/5491176525097" class="nav-cta">Consultar turno</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-img">
+      <img src="bambu.png" alt="Carlos — Masaje con Bambú · Escuela SENDA" style="object-position: center 20%;">
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span>SENDA · Escuela de Masajes</span>
+      </div>
+      <h1>Aprendé<br><em>a sanar.</em></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-lead">Carlos comparte casi 20 años de conocimiento. Clases a domicilio, individuales o en pareja.
+        Desde técnicas básicas hasta anatomía aplicada al masaje.</p>
+      <div class="hero-actions">
+        <a href="#clases" class="btn-oro">Ver clases y precios</a>
+        <a href="https://wa.me/5491176525097" class="btn-line">Consultar ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Clases Individuales</span><span class="sep">·</span>
+      <span>Para Parejas</span><span class="sep">·</span>
+      <span>Talleres Grupales</span><span class="sep">·</span>
+      <span>Cursos Completos</span><span class="sep">·</span>
+      <span>Anatomia Aplicada</span><span class="sep">·</span>
+      <span>A Domicilio</span><span class="sep">·</span>
+      <span>Santa Barbara Tigre</span><span class="sep">·</span>
+      <span>Zona Norte y CABA</span><span class="sep">·</span>
+      <span>Clases Individuales</span><span class="sep">·</span>
+      <span>Para Parejas</span><span class="sep">·</span>
+      <span>Talleres Grupales</span><span class="sep">·</span>
+      <span>Cursos Completos</span><span class="sep">·</span>
+      <span>Anatomia Aplicada</span><span class="sep">·</span>
+      <span>A Domicilio</span><span class="sep">·</span>
+      <span>Santa Barbara Tigre</span><span class="sep">·</span>
+      <span>Zona Norte y CABA</span><span class="sep">·</span>
+    </div>
+  </div>
+
+  <!-- POR QUE -->
+  <section class="sec reveal">
+    <div class="eyebrow">Por que aprender con Carlos</div>
+    <h2>El que sabe,<br><em>enseña mejor.</em></h2>
+    <p>No es un docente de manual. Es alguien que lleva casi 20 años sintiendo los musculos, leyendo el cuerpo,
+      perfeccionando cada tecnica en cientos de sesiones reales.</p>
+    <div class="porq-grid">
+      <div class="porq-card reveal">
+        <div class="porq-num">01</div>
+        <div class="porq-title">Titulo profesional 2006</div>
+        <p class="porq-text">No aprende de YouTube. Tiene formacion academica oficial y casi dos decadas de practica
+          continua sobre su respaldo.</p>
+      </div>
+      <div class="porq-card reveal reveal-delay-1">
+        <div class="porq-num">02</div>
+        <div class="porq-title">Clases a domicilio</div>
+        <p class="porq-text">Carlos lleva todo. Aprende en tu casa, en tu ambiente, con tu comodidad. Sin trasladarte a
+          un instituto ni adaptar tus horarios.</p>
+      </div>
+      <div class="porq-card reveal reveal-delay-2">
+        <div class="porq-num">03</div>
+        <div class="porq-title">Adaptado a tu objetivo</div>
+        <p class="porq-text">Cada clase se arma segun lo que queres aprender. No hay programa rigido — hay una
+          conversacion previa y un plan hecho para vos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <div class="galeria">
+    <div class="gal-item">
+      <img src="manos masajes mio.png" alt="Tecnica profesional — manos de Carlos">
+      <div class="gal-overlay">Tecnica de manos</div>
+    </div>
+    <div class="gal-item">
+      <img src="masaje endenu.png" alt="Carlos masaje a domicilio">
+      <div class="gal-overlay">Masaje a domicilio</div>
+    </div>
+    <div class="gal-item">
+      <img src="streching.png" alt="Carlos stretching asistido">
+      <div class="gal-overlay">Stretching asistido</div>
+    </div>
+    <div class="gal-item">
+      <img src="masaje_fem_yo.png" alt="Masaje profesional a domicilio">
+      <div class="gal-overlay">Masaje profesional</div>
+    </div>
+    <div class="gal-item">
+      <img src="masajeyopie.png" alt="Tecnica de pies">
+      <div class="gal-overlay">Tecnica de pies</div>
+    </div>
+    <div class="gal-item">
+      <img src="espacio co toallas.png" alt="Espacio preparado">
+      <div class="gal-overlay">Espacio equipado</div>
+    </div>
+  </div>
+
+  <!-- MODALIDADES -->
+  <section class="sec-full sec-dark" id="clases">
+    <div style="max-width:1200px;margin:0 auto;padding:0 60px;">
+      <div class="eyebrow reveal">Modalidades de clase</div>
+      <h2 class="reveal">Como <em>quieras aprender.</em></h2>
+      <p class="reveal">Cuatro formas de acceder al conocimiento. Empeza por donde te resulte mas natural y avanza a tu
+        ritmo.</p>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:0 60px;">
+      <div class="modal-grid">
+
+        <div class="modal-card featured reveal">
+          <span class="modal-tag">Mas solicitado</span>
+          <div class="modal-name">Clase para Parejas</div>
+          <p class="modal-desc">Carlos les ensena a masajearse entre ustedes. Uno aprende mientras el otro recibe. Luego
+            se invierten los roles. La experiencia mas completa — aprendizaje y disfrute en el mismo encuentro.</p>
+          <div class="modal-includes">
+            <div class="modal-includes-title">Que incluye</div>
+            <ul class="modal-includes">
+              <li>Tecnicas basicas de espalda, cuello y piernas</li>
+              <li>Presion correcta sin lastimar</li>
+              <li>Posturas y posiciones para ambos</li>
+              <li>Uso de aceites y deslizamiento</li>
+              <li>Guia simple en papel para llevarse</li>
+            </ul>
+          </div>
+          <div class="modal-precio" data-price-id="clase-parejas">$70.000<small>Por pareja · 90 minutos · A domicilio o
+              Santa Barbara</small></div>
+        </div>
+
+        <div class="modal-card reveal reveal-delay-1">
+          <span class="modal-tag">Individual</span>
+          <div class="modal-name">Clase Individual</div>
+          <p class="modal-desc">Para quien quiere aprender para practicar con un familiar, pareja o amigo. Tambien ideal
+            para explorar si el masaje puede ser una vocacion o actividad laboral.</p>
+          <div class="modal-includes">
+            <div class="modal-includes-title">Que incluye</div>
+            <ul class="modal-includes">
+              <li>Tecnicas de masaje relajante basico</li>
+              <li>Posiciones y postura del masajista</li>
+              <li>Presion adecuada por zona corporal</li>
+              <li>Seguridad e higiene profesional</li>
+              <li>Guia simple en papel</li>
+            </ul>
+          </div>
+          <div class="modal-precio" data-price-id="clase-individual">$55.000<small>Individual · 60-90 min · A
+              domicilio</small></div>
+        </div>
+
+        <div class="modal-card reveal">
+          <span class="modal-tag">Grupal</span>
+          <div class="modal-name">Taller Grupal</div>
+          <p class="modal-desc">Grupos de hasta 6 personas. Amigas, companeras de trabajo, familia. Una unica salida de
+            Carlos con multiples participantes. Ideal para eventos privados, cumpleanos o despedidas.</p>
+          <div class="modal-includes">
+            <div class="modal-includes-title">Por que es rentable para vos</div>
+            <ul class="modal-includes">
+              <li>4 personas — $160.000 en una sola salida</li>
+              <li>6 personas — $240.000 en una sola salida</li>
+              <li>Dinamica de taller en parejas rotativas</li>
+              <li>Duracion 2 horas · Maximo 6 personas</li>
+            </ul>
+          </div>
+          <div class="modal-precio" data-price-id="clase-grupal">$40.000<small>Por persona · Minimo 4 personas · 2
+              horas</small></div>
+        </div>
+
+        <div class="modal-card reveal reveal-delay-1">
+          <span class="modal-tag">Formacion completa</span>
+          <div class="modal-name">Curso Profesional</div>
+          <p class="modal-desc">Para quien quiere aprender en profundidad y seriamente. Varios encuentros progresivos
+            que van desde lo basico hasta tecnicas avanzadas. Con opcion de sumar anatomia aplicada.</p>
+          <div class="modal-includes">
+            <div class="modal-includes-title">Para quien es</div>
+            <ul class="modal-includes">
+              <li>Quien quiere trabajar como masajista</li>
+              <li>Cuidadores de personas con dolor cronico</li>
+              <li>Profesionales de salud que quieren sumar herramientas</li>
+              <li>Personas interesadas en el bienestar como carrera</li>
+            </ul>
+          </div>
+          <div class="modal-precio" data-price-id="curso-profesional">Desde $180.000<small>Ver programas abajo ·
+              Individual o en pareja</small></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CURSOS CON NIVEL -->
+  <div class="divider" style="margin:0;"></div>
+  <section style="padding:120px 0;background:var(--negro);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 60px 60px;" class="reveal">
+      <div class="eyebrow">Programas por nivel</div>
+      <h2>Aprendizaje<br><em>progresivo.</em></h2>
+      <p>Cada nivel incluye al anterior. Arranca donde quieras y avanza a tu ritmo. Carlos adapta el ritmo y la
+        profundidad segun el alumno.</p>
+    </div>
+
+    <div class="cursos-wrap">
+      <div class="curso-item reveal">
+        <div class="curso-num">01</div>
+        <div class="curso-info">
+          <div class="curso-nivel">Nivel Inicial</div>
+          <div class="curso-nombre">Masaje para el Hogar</div>
+          <div class="curso-duracion">3 encuentros de 90 minutos</div>
+          <p style="font-size:14px;max-width:560px;margin-bottom:16px;">Para quien quiere aprender a dar masajes basicos
+            en casa, sin pretension profesional. La base de todo.</p>
+          <div class="curso-temas">
+            <span class="tema-tag">Masaje relajante espalda</span>
+            <span class="tema-tag">Cuello y hombros</span>
+            <span class="tema-tag">Piernas y pies</span>
+            <span class="tema-tag">Uso de aceites</span>
+            <span class="tema-tag">Ergonomia del masajista</span>
+          </div>
+        </div>
+        <div class="curso-precio-col">
+          <div class="cp-amount" data-price-id="nivel1-ind">$180.000</div>
+          <div class="cp-note">Individual</div>
+          <div class="cp-amount" data-price-id="nivel1-par" style="font-size:28px;margin-top:8px;">$220.000</div>
+          <div class="cp-note">En pareja</div>
+          <a href="https://wa.me/5491176525097" class="cp-btn">Consultar</a>
+        </div>
+      </div>
+
+      <div class="curso-item reveal">
+        <div class="curso-num">02</div>
+        <div class="curso-info">
+          <div class="curso-nivel">Nivel Medio</div>
+          <div class="curso-nombre">Tecnicas Basicas Profesionales</div>
+          <div class="curso-duracion">5 encuentros de 90 minutos</div>
+          <p style="font-size:14px;max-width:560px;margin-bottom:16px;">Para quien quiere incorporar tecnicas de nivel
+            profesional y empezar a tener un manejo mas preciso del cuerpo.</p>
+          <div class="curso-temas">
+            <span class="tema-tag">Todo el nivel inicial</span>
+            <span class="tema-tag">Descontracturante basico</span>
+            <span class="tema-tag">Puntos de tension</span>
+            <span class="tema-tag">Introduccion al bambu</span>
+            <span class="tema-tag">Protocolo completo</span>
+          </div>
+        </div>
+        <div class="curso-precio-col">
+          <div class="cp-amount" data-price-id="nivel2-ind">$290.000</div>
+          <div class="cp-note">Individual</div>
+          <div class="cp-amount" data-price-id="nivel2-par" style="font-size:28px;margin-top:8px;">$350.000</div>
+          <div class="cp-note">En pareja</div>
+          <a href="https://wa.me/5491176525097" class="cp-btn">Consultar</a>
+        </div>
+      </div>
+
+      <div class="curso-item reveal">
+        <div class="curso-num">03</div>
+        <div class="curso-info">
+          <div class="curso-nivel">Nivel Completo · Formacion Profesional</div>
+          <div class="curso-nombre">Masajista Integral</div>
+          <div class="curso-duracion">8 encuentros de 90 minutos</div>
+          <p style="font-size:14px;max-width:560px;margin-bottom:16px;">Para quien quiere formarse seriamente y
+            eventualmente trabajar como masajista. El programa mas completo que ofrece Carlos.</p>
+          <div class="curso-temas">
+            <span class="tema-tag">Todo el nivel medio</span>
+            <span class="tema-tag">Anatomia basica aplicada</span>
+            <span class="tema-tag">Musculos y articulaciones</span>
+            <span class="tema-tag">Contraindicaciones</span>
+            <span class="tema-tag">Bambu completo</span>
+            <span class="tema-tag">Como armar tu servicio</span>
+          </div>
+        </div>
+        <div class="curso-precio-col">
+          <div class="cp-amount" data-price-id="nivel3-ind">$450.000</div>
+          <div class="cp-note">Individual</div>
+          <div class="cp-amount" data-price-id="nivel3-par" style="font-size:28px;margin-top:8px;">$540.000</div>
+          <div class="cp-note">En pareja</div>
+          <a href="https://wa.me/5491176525097" class="cp-btn">Consultar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANATOMIA MODULO -->
+    <div class="anatomia-banner reveal">
+      <div class="ab-left">
+        <div class="eyebrow">Modulo adicional opcional</div>
+        <div class="ab-title">Anatomia<br><em>Aplicada al Masaje</em></div>
+        <p class="ab-desc">2 a 3 encuentros que se pueden sumar a cualquier nivel. Musculos principales, columna
+          vertebral, articulaciones, zonas de contraindicacion. Entender el cuerpo cambia completamente como se trabaja
+          sobre el.</p>
+      </div>
+      <div class="ab-right">
+        <div class="ab-price" data-price-id="anatomia">+$90.000</div>
+        <div class="ab-note">Se suma a cualquier curso · 2-3 encuentros</div>
+        <a href="https://wa.me/5491176525097" class="btn-oro"
+          style="margin-top:24px;display:inline-block;font-size:10px;padding:14px 32px;">Consultar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICOS -->
+  <section class="sec sec-dark reveal">
+    <div class="eyebrow">A quien le sirve</div>
+    <h2>Cualquiera puede<br><em>aprender.</em></h2>
+    <div class="pub-grid">
+      <div class="pub-card reveal">
+        <div class="pub-name">Parejas</div>
+        <p class="pub-desc">Aprenden a cuidarse mutuamente. Una experiencia que se queda para siempre y que ninguna cena
+          de aniversario puede replicar.</p>
+      </div>
+      <div class="pub-card reveal reveal-delay-1">
+        <div class="pub-name">Cuidadores</div>
+        <p class="pub-desc">Hijos que cuidan padres mayores. Personas que acompanan a alguien con dolor cronico o en
+          recuperacion postoperatoria.</p>
+      </div>
+      <div class="pub-card reveal reveal-delay-2">
+        <div class="pub-name">Interesados en bienestar</div>
+        <p class="pub-desc">Quienes quieren sumar una herramienta de autocuidado a su vida. Zona Norte tiene mucho de
+          este perfil y muy poca oferta educativa real.</p>
+      </div>
+      <div class="pub-card reveal reveal-delay-3">
+        <div class="pub-name">Futuros masajistas</div>
+        <p class="pub-desc">Quien quiere explorar si puede trabajar en esto. El curso completo con anatomia es la base
+          para tomar la decision con fundamento.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- CTA FINAL -->
+
+  <!-- ESPACIO SECTION -->
+  <section style="background:var(--negro);padding:0;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;min-height:500px;">
+      <div style="overflow:hidden;position:relative;">
+        <img src="presenatcion en denumasje.png" alt="Espacio Santa Barbara — SENDA"
+          style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(.75);transition:filter .5s;"
+          onmouseover="this.style.filter='brightness(.9)'" onmouseout="this.style.filter='brightness(.75)'">
+      </div>
+      <div style="background:var(--verde);padding:80px 60px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--oro);margin-bottom:20px;">El
+          espacio</div>
+        <div
+          style="font-family:'Playfair Display',serif;font-size:42px;font-weight:300;color:var(--crema);line-height:1.1;margin-bottom:24px;">
+          Santa Bárbara,<br><em style="color:var(--oro);">Tigre.</em></div>
+        <p style="font-size:14px;color:rgba(240,232,213,.55);line-height:1.9;max-width:380px;margin-bottom:0;">Un
+          espacio exclusivo dentro del barrio cerrado Santa Bárbara. Para quienes prefieren ir al lugar en vez de
+          recibir a Carlos en casa. Ambiente cuidado, privado y completamente equipado.</p>
+        <div style="margin-top:36px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+          <a href="https://wa.me/5491176525097"
+            style="display:inline-block;background:var(--oro);color:var(--negro);font-size:10px;letter-spacing:4px;text-transform:uppercase;text-decoration:none;padding:16px 36px;font-weight:500;font-family:'Raleway',sans-serif;transition:background .3s;"
+            onmouseover="this.style.background='#D4AF50'" onmouseout="this.style.background='var(--oro)'">
+            Reservar en el espacio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section reveal">
+    <div class="eyebrow">El primer paso</div>
+    <h2>Consultá sin<br><em>compromiso.</em></h2>
+    <p>Carlos responde rapido. Un mensaje y coordinamos el primer encuentro — a domicilio o en Santa Barbara, Tigre.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/5491176525097" class="btn-wa">Escribir por WhatsApp</a>
+      <a href="senda_web.html" class="btn-line" style="color:rgba(240,232,213,.4);">Ver masajes a domicilio</a>
+    </div>
+  </section>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/5491176525097" class="wa-float" target="_blank" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo"><img src="logo_senda.jpg" alt="SENDA"></div>
+      <div class="footer-info">
+        <p>Escuela de Masajes · Carlos · Masajista Profesional desde 2006</p>
+        <p>Zona Norte y CABA · Santa Barbara, Tigre · A domicilio</p>
+        <p>011-76525097 · @sendamasajes</p>
+      </div>
+      <div class="footer-links">
+        <a href="senda_web.html">Masajes</a>
+        <a href="#clases">Clases</a>
+        <a href="https://wa.me/5491176525097">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px';
+    });
+    function animateRing() {
+      ringX += (mouseX - ringX) * .12; ringY += (mouseY - ringY) * .12;
+      ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function (e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // ═══════════ LIGHTBOX ═══════════
+    const galItems = document.querySelectorAll('.gal-item');
+    const galData = Array.from(galItems).map(item => ({
+      src: item.querySelector('img').src,
+      caption: item.querySelector('.gal-overlay')?.textContent || ''
+    }));
+    let currentLB = 0;
+
+    // Create lightbox DOM
+    const lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = `
+      <button class="lightbox-close">✕</button>
+      <button class="lightbox-arrow lightbox-prev">‹</button>
+      <img class="lightbox-img" src="" alt="">
+      <button class="lightbox-arrow lightbox-next">›</button>
+      <div class="lightbox-caption"></div>
+    `;
+    document.body.appendChild(lb);
+
+    const lbImg = lb.querySelector('.lightbox-img');
+    const lbCaption = lb.querySelector('.lightbox-caption');
+    const lbClose = lb.querySelector('.lightbox-close');
+    const lbPrev = lb.querySelector('.lightbox-prev');
+    const lbNext = lb.querySelector('.lightbox-next');
+
+    function openLightbox(index) {
+      currentLB = index;
+      lbImg.src = galData[index].src;
+      lbImg.alt = galData[index].caption;
+      lbCaption.textContent = galData[index].caption;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navLB(dir) {
+      currentLB = (currentLB + dir + galData.length) % galData.length;
+      lbImg.src = galData[currentLB].src;
+      lbImg.alt = galData[currentLB].caption;
+      lbCaption.textContent = galData[currentLB].caption;
+    }
+
+    galItems.forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(i));
+    });
+
+    lbClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+    lbPrev.addEventListener('click', (e) => { e.stopPropagation(); navLB(-1); });
+    lbNext.addEventListener('click', (e) => { e.stopPropagation(); navLB(1); });
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navLB(-1);
+      if (e.key === 'ArrowRight') navLB(1);
+    });
+    // ═══════════ ADMIN PRICE PANEL ═══════════
+    const STORAGE_KEY = 'senda_precios_escuela';
+    const priceConfig = [
+      { id: 'clase-parejas', label: 'Clase para Parejas', default: '$70.000' },
+      { id: 'clase-individual', label: 'Clase Individual', default: '$55.000' },
+      { id: 'clase-grupal', label: 'Taller Grupal (por persona)', default: '$40.000' },
+      { id: 'curso-profesional', label: 'Curso Profesional (desde)', default: 'Desde $180.000' },
+      { id: 'nivel1-ind', label: 'Nivel Inicial - Individual', default: '$180.000' },
+      { id: 'nivel1-par', label: 'Nivel Inicial - Pareja', default: '$220.000' },
+      { id: 'nivel2-ind', label: 'Nivel Medio - Individual', default: '$290.000' },
+      { id: 'nivel2-par', label: 'Nivel Medio - Pareja', default: '$350.000' },
+      { id: 'nivel3-ind', label: 'Nivel Completo - Individual', default: '$450.000' },
+      { id: 'nivel3-par', label: 'Nivel Completo - Pareja', default: '$540.000' },
+      { id: 'anatomia', label: 'Anatomia Aplicada', default: '+$90.000' }
+    ];
+
+    function applyPrices(prices) {
+      priceConfig.forEach(p => {
+        const el = document.querySelector(`[data-price-id="${p.id}"]`);
+        if (el && prices[p.id]) {
+          const small = el.querySelector('small');
+          const smallHTML = small ? small.outerHTML : '';
+          el.innerHTML = prices[p.id] + smallHTML;
+        }
+      });
+    }
+
+    function loadPrices() {
+      fetch('precios.json')
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(data => {
+          if (data.escuela) applyPrices(data.escuela);
+        })
+        .catch(() => {
+          const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+          if (Object.keys(saved).length) applyPrices(saved);
+        });
+    }
+    loadPrices();
+
+    let clickCount = 0, clickTimer = null;
+    const footerLogo = document.querySelector('.footer-logo');
+    if (footerLogo) {
+      footerLogo.style.cursor = 'pointer';
+      footerLogo.addEventListener('click', () => {
+        clickCount++;
+        clearTimeout(clickTimer);
+        clickTimer = setTimeout(() => { clickCount = 0; }, 1500);
+        if (clickCount >= 5) { clickCount = 0; openAdminPanel(); }
+      });
+    }
+
+    function openAdminPanel() {
+      if (document.getElementById('adminPanel')) return;
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      const panel = document.createElement('div');
+      panel.id = 'adminPanel';
+      panel.innerHTML = `
+        <style>
+          #adminPanel{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);cursor:auto;}
+          .admin-box{background:#111C16;border:1px solid rgba(184,149,42,.4);padding:40px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;}
+          .admin-box h3{font-family:'Playfair Display',serif;font-size:28px;color:#F0E8D5;font-weight:300;margin-bottom:8px;}
+          .admin-sub{font-size:12px;color:rgba(240,232,213,.3);letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;}
+          .admin-field{margin-bottom:16px;}
+          .admin-field label{display:block;font-size:11px;color:rgba(240,232,213,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+          .admin-field input{width:100%;background:rgba(10,7,5,.6);border:1px solid rgba(184,149,42,.2);color:#F0E8D5;padding:10px 14px;font-size:15px;font-family:'Raleway',sans-serif;outline:none;}
+          .admin-field input:focus{border-color:#B8952A;}
+          .admin-btns{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;}
+          .admin-btns button{padding:14px 28px;font-size:11px;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;font-family:'Raleway',sans-serif;font-weight:500;}
+          .btn-save{background:#B8952A;color:#0A0705;}
+          .btn-reset{background:transparent;border:1px solid rgba(184,149,42,.3);color:#B8952A;}
+          .btn-close{background:transparent;border:1px solid rgba(240,232,213,.15);color:rgba(240,232,213,.4);}
+        </style>
+        <div class="admin-box">
+          <h3>Editar Precios Escuela</h3>
+          <div class="admin-sub">Panel de administracion</div>
+          ${priceConfig.map(p => `
+            <div class="admin-field">
+              <label>${p.label}</label>
+              <input type="text" data-admin-id="${p.id}" value="${saved[p.id] || p.default}">
+            </div>
+          `).join('')}
+          <div class="admin-btns">
+            <button class="btn-save" onclick="savePrices()">Guardar</button>
+            <button class="btn-reset" onclick="resetPrices()">Resetear</button>
+            <button class="btn-close" onclick="closeAdmin()">Cerrar</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(panel);
+      panel.addEventListener('click', (e) => { if (e.target === panel) closeAdmin(); });
+    }
+
+    function savePrices() {
+      const data = {};
+      document.querySelectorAll('[data-admin-id]').forEach(input => {
+        data[input.dataset.adminId] = input.value;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      loadPrices();
+      closeAdmin();
+    }
+
+    function resetPrices() {
+      localStorage.removeItem(STORAGE_KEY);
+      priceConfig.forEach(p => {
+        const el = document.querySelector(`[data-price-id="${p.id}"]`);
+        if (el) {
+          const small = el.querySelector('small');
+          const smallHTML = small ? small.outerHTML : '';
+          el.innerHTML = p.default + smallHTML;
+        }
+      });
+      closeAdmin();
+    }
+
+    function closeAdmin() {
+      const panel = document.getElementById('adminPanel');
+      if (panel) panel.remove();
+    }
+  </script>
+</body>
+
+</html>
