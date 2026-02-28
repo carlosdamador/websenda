@@ -1450,7 +1450,83 @@
     /* ═══════════════════════════════════════════ */
     /*  RESPONSIVE                                 */
     /* ═══════════════════════════════════════════ */
+    /* ═══ HAMBURGER MENU ═══ */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1002;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--crema);
+      transition: all .3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1001;
+      background: rgba(10, 7, 5, .96);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .mobile-menu a {
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(240, 232, 213, .6);
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--oro);
+    }
+
+    .mobile-menu .nav-cta {
+      background: var(--oro);
+      color: var(--negro) !important;
+      padding: 14px 32px;
+      margin-top: 16px;
+    }
+
     @media(max-width: 900px) {
+      .hamburger {
+        display: flex;
+      }
+
       nav {
         padding: 24px 28px;
       }
@@ -1629,7 +1705,20 @@
       <li><a href="escuela.html" class="nav-escuela">Escuela</a></li>
       <li><a href="https://wa.me/5491176525097" class="nav-cta">Reservar turno</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#servicios" class="mobile-link">Servicios</a>
+    <a href="#parejas" class="mobile-link">Parejas</a>
+    <a href="#zonas" class="mobile-link">Zonas</a>
+    <a href="#carlos" class="mobile-link">Masajista</a>
+    <a href="escuela.html">Escuela</a>
+    <a href="https://wa.me/5491176525097" class="nav-cta">Reservar turno</a>
+  </div>
 
   <!-- ═══════════ HERO ═══════════ -->
   <section class="hero">
@@ -2153,6 +2242,22 @@
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+      });
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
       });
     });
     // ═══════════ ADMIN PRICE PANEL ═══════════

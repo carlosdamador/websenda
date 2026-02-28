@@ -1192,6 +1192,19 @@
       .anatomia-banner {
         padding: 40px 32px;
       }
+
+      .espacio-grid {
+        grid-template-columns: 1fr !important;
+        min-height: auto !important;
+      }
+
+      .espacio-grid .espacio-img {
+        height: 300px;
+      }
+
+      .espacio-text {
+        padding: 48px 24px !important;
+      }
     }
 
     /* ═══ FLOATING WHATSAPP ═══ */
@@ -1715,13 +1728,14 @@
 
   <!-- ESPACIO SECTION -->
   <section style="background:var(--negro);padding:0;">
-    <div style="display:grid;grid-template-columns:1fr 1fr;min-height:500px;">
-      <div style="overflow:hidden;position:relative;">
+    <div class="espacio-grid" style="display:grid;grid-template-columns:1fr 1fr;min-height:500px;">
+      <div class="espacio-img" style="overflow:hidden;position:relative;">
         <img src="presenatcion en denumasje.png" alt="Espacio Santa Barbara — SENDA"
           style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(.75);transition:filter .5s;"
           onmouseover="this.style.filter='brightness(.9)'" onmouseout="this.style.filter='brightness(.75)'">
       </div>
-      <div style="background:var(--verde);padding:80px 60px;display:flex;flex-direction:column;justify-content:center;">
+      <div class="espacio-text"
+        style="background:var(--verde);padding:80px 60px;display:flex;flex-direction:column;justify-content:center;">
         <div style="font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--oro);margin-bottom:20px;">El
           espacio</div>
         <div
