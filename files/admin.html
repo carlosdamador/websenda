@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENDA · Panel de Administracion</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Raleway:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0705;
+            --verde: #111C16;
+            --oro: #B8952A;
+            --crema: #F0E8D5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg);
+            color: var(--crema);
+            min-height: 100vh;
+        }
+
+        /* ═══ LOGIN ═══ */
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: var(--verde);
+            border: 1px solid rgba(184, 149, 42, .3);
+            padding: 48px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-box h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .login-box h1 span {
+            color: var(--oro);
+        }
+
+        .login-sub {
+            font-size: 12px;
+            color: rgba(240, 232, 213, .3);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 36px;
+        }
+
+        .login-input {
+            width: 100%;
+            background: rgba(10, 7, 5, .6);
+            border: 1px solid rgba(184, 149, 42, .2);
+            color: var(--crema);
+            padding: 14px 20px;
+            font-size: 16px;
+            font-family: 'Raleway', sans-serif;
+            outline: none;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 4px;
+        }
+
+        .login-input:focus {
+            border-color: var(--oro);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--oro);
+            color: var(--bg);
+            border: none;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .3s;
+        }
+
+        .login-btn:hover {
+            background: #D4AF50;
+        }
+
+        .login-error {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 12px;
+            display: none;
+        }
+
+        /* ═══ ADMIN PANEL ═══ */
+        .admin-panel {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .admin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .admin-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 300;
+        }
+
+        .admin-header h1 span {
+            color: var(--oro);
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            transition: all .3s;
+        }
+
+        .btn-gold {
+            background: var(--oro);
+            color: var(--bg);
+        }
+
+        .btn-gold:hover {
+            background: #D4AF50;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(184, 149, 42, .3);
+            color: var(--oro);
+        }
+
+        .btn-outline:hover {
+            background: rgba(184, 149, 42, .1);
+        }
+
+        .btn-red {
+            background: transparent;
+            border: 1px solid rgba(231, 76, 60, .3);
+            color: #e74c3c;
+        }
+
+        .btn-red:hover {
+            background: rgba(231, 76, 60, .1);
+        }
+
+        .btn-back {
+            background: transparent;
+            border: 1px solid rgba(240, 232, 213, .15);
+            color: rgba(240, 232, 213, .4);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-back:hover {
+            color: var(--crema);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 300;
+            color: var(--oro);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(184, 149, 42, .15);
+        }
+
+        .price-group {
+            margin-bottom: 40px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(240, 232, 213, .06);
+            gap: 16px;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: rgba(240, 232, 213, .7);
+            flex: 1;
+        }
+
+        .price-input {
+            width: 160px;
+            background: rgba(10, 7, 5, .6);
+            border: 1px solid rgba(184, 149, 42, .15);
+            color: var(--crema);
+            padding: 10px 14px;
+            font-size: 16px;
+            font-family: 'Raleway', sans-serif;
+            outline: none;
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .price-input:focus {
+            border-color: var(--oro);
+        }
+
+        /* ═══ CONFIG SECTION ═══ */
+        .config-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(240, 232, 213, .06);
+            gap: 16px;
+        }
+
+        .config-input {
+            width: 300px;
+            background: rgba(10, 7, 5, .6);
+            border: 1px solid rgba(184, 149, 42, .15);
+            color: var(--crema);
+            padding: 10px 14px;
+            font-size: 14px;
+            font-family: 'Raleway', sans-serif;
+            outline: none;
+        }
+
+        .config-input:focus {
+            border-color: var(--oro);
+        }
+
+        .save-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--oro);
+            color: var(--bg);
+            padding: 14px 32px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            opacity: 0;
+            transition: all .4s;
+            z-index: 9999;
+        }
+
+        .save-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+
+            .price-row,
+            .config-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .price-input,
+            .config-input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ LOGIN SCREEN ═══ -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <h1>SEN<span>D</span>A</h1>
+            <div class="login-sub">Panel de administracion</div>
+            <input type="password" class="login-input" id="passwordInput" placeholder="Contraseña" autofocus>
+            <button class="login-btn" onclick="tryLogin()">Ingresar</button>
+            <div class="login-error" id="loginError">Contraseña incorrecta</div>
+        </div>
+    </div>
+
+    <!-- ═══ ADMIN PANEL ═══ -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h1>Editar <span>Precios</span></h1>
+            <div class="admin-actions">
+                <button class="btn btn-gold" onclick="saveAll()">Guardar cambios</button>
+                <button class="btn btn-outline" onclick="resetAll()">Resetear todo</button>
+                <a href="senda_web.html" class="btn btn-back">← Volver al sitio</a>
+            </div>
+        </div>
+
+        <!-- INFO BANNER -->
+        <div
+            style="background:rgba(184,149,42,.08);border:1px solid rgba(184,149,42,.25);padding:20px 24px;margin-bottom:32px;font-size:13px;line-height:1.7;color:rgba(240,232,213,.7);">
+            <strong style="color:var(--oro);font-size:14px;">📌 ¿Como cambiar precios en la web publicada?</strong><br>
+            Los cambios que hagas aca se guardan solo en <strong>este navegador</strong>. Para que <strong>todos los
+                visitantes</strong> vean los precios nuevos:
+            <ol style="margin:8px 0 0 20px;padding:0;">
+                <li>Abri <a href="https://github.com/carlosdamador/websenda/edit/main/precios.json" target="_blank"
+                        style="color:var(--oro);font-weight:600;">este link directo a precios.json</a></li>
+                <li>Cambia los numeros que quieras</li>
+                <li>Hace click en <strong>Commit changes</strong></li>
+            </ol>
+        </div>
+
+        <!-- MASAJES -->
+        <div class="price-group">
+            <div class="section-title">Masajes a Domicilio</div>
+            <div id="masajes-prices"></div>
+        </div>
+
+        <!-- ESCUELA -->
+        <div class="price-group">
+            <div class="section-title">Escuela de Masajes</div>
+            <div id="escuela-prices"></div>
+        </div>
+
+        <!-- CONFIG -->
+        <div class="price-group">
+            <div class="section-title">Configuracion</div>
+            <div id="config-fields"></div>
+        </div>
+
+        <!-- CAMBIAR CONTRASEÑA -->
+        <div class="price-group">
+            <div class="section-title">Seguridad</div>
+            <div class="config-row">
+                <div class="price-label">Cambiar contraseña</div>
+                <input type="password" class="config-input" id="newPassword" placeholder="Nueva contraseña"
+                    style="width:200px;">
+            </div>
+            <div style="margin-top:12px;">
+                <button class="btn btn-outline" onclick="changePassword()">Actualizar contraseña</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="save-toast" id="toast">Cambios guardados</div>
+
+    <script>
+        // ═══ PASSWORD ═══
+        const DEFAULT_PASSWORD = 'senda2024';
+        function getPassword() {
+            return localStorage.getItem('senda_admin_password') || DEFAULT_PASSWORD;
+        }
+
+        function tryLogin() {
+            const input = document.getElementById('passwordInput').value;
+            if (input === getPassword()) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                renderAll();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+                setTimeout(() => { document.getElementById('loginError').style.display = 'none'; }, 2000);
+            }
+        }
+
+        document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') tryLogin();
+        });
+
+        function changePassword() {
+            const newPwd = document.getElementById('newPassword').value.trim();
+            if (newPwd.length < 4) {
+                showToast('Minimo 4 caracteres');
+                return;
+            }
+            localStorage.setItem('senda_admin_password', newPwd);
+            document.getElementById('newPassword').value = '';
+            showToast('Contraseña actualizada');
+        }
+
+        // ═══ PRICE DEFINITIONS ═══
+        const masajesConfig = [
+            { id: 'relajante', label: 'Masaje Relajante' },
+            { id: 'descontracturante', label: 'Masaje Descontracturante' },
+            { id: 'bambu', label: 'Masaje con Caña de Bambú' },
+            { id: 'parejas', label: 'Masaje para Parejas' },
+            { id: 'deportivo', label: 'Masaje Deportivo' },
+            { id: 'stretching', label: 'Estiramiento (Stretching)' },
+            { id: 'spa', label: 'Masaje Spa' },
+            { id: '4manos', label: 'Masaje a 4 Manos' },
+            { id: 'reductivo', label: 'Masaje Reductivo' },
+            { id: 'prenatal', label: 'Masaje Prenatal' },
+            { id: 'drenaje', label: 'Drenaje Linfático' },
+            { id: 'clases', label: 'Clases de Masajes (desde)' },
+            { id: 'pack5', label: 'Pack x5 Sesiones' },
+            { id: '90min', label: 'Sesión 90 minutos' },
+            { id: 'parejas-destacado', label: 'Parejas (sección destacada)' }
+        ];
+
+        const masajesDefaults = {
+            relajante: '$45.000', descontracturante: '$45.000', bambu: '$50.000',
+            parejas: '$80.000', deportivo: '$45.000', stretching: '$45.000',
+            spa: '$45.000', '4manos': '$65.000', reductivo: '$45.000',
+            prenatal: '$45.000', drenaje: '$45.000', clases: 'Desde $55.000',
+            pack5: '$200.000', '90min': '$65.000', 'parejas-destacado': '$80.000'
+        };
+
+        const escuelaConfig = [
+            { id: 'clase-parejas', label: 'Clase para Parejas' },
+            { id: 'clase-individual', label: 'Clase Individual' },
+            { id: 'clase-grupal', label: 'Taller Grupal (por persona)' },
+            { id: 'curso-profesional', label: 'Curso Profesional (desde)' },
+            { id: 'nivel1-ind', label: 'Nivel Inicial - Individual' },
+            { id: 'nivel1-par', label: 'Nivel Inicial - En Pareja' },
+            { id: 'nivel2-ind', label: 'Nivel Medio - Individual' },
+            { id: 'nivel2-par', label: 'Nivel Medio - En Pareja' },
+            { id: 'nivel3-ind', label: 'Nivel Completo - Individual' },
+            { id: 'nivel3-par', label: 'Nivel Completo - En Pareja' },
+            { id: 'anatomia', label: 'Anatomía Aplicada' }
+        ];
+
+        const escuelaDefaults = {
+            'clase-parejas': '$70.000', 'clase-individual': '$55.000',
+            'clase-grupal': '$40.000', 'curso-profesional': 'Desde $180.000',
+            'nivel1-ind': '$180.000', 'nivel1-par': '$220.000',
+            'nivel2-ind': '$290.000', 'nivel2-par': '$350.000',
+            'nivel3-ind': '$450.000', 'nivel3-par': '$540.000',
+            anatomia: '+$90.000'
+        };
+
+        const configFields = [
+            { id: 'instagram', label: 'Instagram (@usuario o URL)', storageKey: 'senda_instagram', default: 'https://www.instagram.com/sendamasajes' },
+            { id: 'whatsapp', label: 'WhatsApp (numero con codigo pais)', storageKey: 'senda_whatsapp', default: '5491176525097' }
+        ];
+
+        // ═══ RENDER ═══
+        function renderAll() {
+            renderPrices('masajes-prices', masajesConfig, 'senda_precios_main', masajesDefaults);
+            renderPrices('escuela-prices', escuelaConfig, 'senda_precios_escuela', escuelaDefaults);
+            renderConfig();
+        }
+
+        function renderPrices(containerId, config, storageKey, defaults) {
+            const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            const container = document.getElementById(containerId);
+            container.innerHTML = config.map(p => `
+        <div class="price-row">
+          <div class="price-label">${p.label}</div>
+          <input class="price-input" data-key="${storageKey}" data-id="${p.id}" value="${saved[p.id] || defaults[p.id] || ''}">
+        </div>
+      `).join('');
+        }
+
+        function renderConfig() {
+            const container = document.getElementById('config-fields');
+            container.innerHTML = configFields.map(f => `
+        <div class="config-row">
+          <div class="price-label">${f.label}</div>
+          <input class="config-input" data-config-id="${f.id}" data-storage-key="${f.storageKey}" value="${localStorage.getItem(f.storageKey) || f.default}">
+        </div>
+      `).join('');
+        }
+
+        // ═══ SAVE ═══
+        function saveAll() {
+            // Save masajes prices
+            const masajesData = {};
+            document.querySelectorAll('[data-key="senda_precios_main"]').forEach(input => {
+                masajesData[input.dataset.id] = input.value;
+            });
+            localStorage.setItem('senda_precios_main', JSON.stringify(masajesData));
+
+            // Save escuela prices
+            const escuelaData = {};
+            document.querySelectorAll('[data-key="senda_precios_escuela"]').forEach(input => {
+                escuelaData[input.dataset.id] = input.value;
+            });
+            localStorage.setItem('senda_precios_escuela', JSON.stringify(escuelaData));
+
+            // Save config
+            document.querySelectorAll('[data-config-id]').forEach(input => {
+                localStorage.setItem(input.dataset.storageKey, input.value);
+            });
+
+            showToast('Cambios guardados correctamente');
+        }
+
+        function resetAll() {
+            if (!confirm('¿Seguro que queres resetear todos los precios a los valores originales?')) return;
+            localStorage.removeItem('senda_precios_main');
+            localStorage.removeItem('senda_precios_escuela');
+            configFields.forEach(f => localStorage.removeItem(f.storageKey));
+            renderAll();
+            showToast('Precios reseteados');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+    </script>
+</body>
+
+</html>
