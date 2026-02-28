@@ -749,11 +749,53 @@
 
     .servicio-card {
       background: var(--bosque);
-      padding: 52px 40px;
+      padding: 0;
       position: relative;
       overflow: hidden;
       transition: background .4s;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .servicio-img {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .servicio-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.65) saturate(.8);
+      transition: all .6s ease;
+    }
+
+    .servicio-card:hover .servicio-img img {
+      filter: brightness(.8) saturate(1);
+      transform: scale(1.05);
+    }
+
+    .servicio-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to top, var(--bosque), transparent);
+      pointer-events: none;
+    }
+
+    .servicio-card.featured-card .servicio-img::after {
+      background: linear-gradient(to top, var(--verde), transparent);
+    }
+
+    .servicio-body {
+      padding: 32px 40px 52px;
+      flex: 1;
     }
 
     .servicio-card::after {
@@ -1164,6 +1206,32 @@
       grid-template-columns: 1fr 1fr;
       gap: 100px;
       align-items: center;
+    }
+
+    .carlos-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carlos-photo img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      object-position: center top;
+      filter: brightness(.8) saturate(.85);
+      transition: filter .5s;
+    }
+
+    .carlos-photo:hover img {
+      filter: brightness(.9) saturate(1);
+    }
+
+    .carlos-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(184, 149, 42, .15);
+      pointer-events: none;
     }
 
     .carlos-text .eyebrow {
@@ -1880,109 +1948,154 @@
     </div>
     <div class="servicios-grid">
       <div class="servicio-card reveal">
-        <div class="servicio-num">01</div>
-        <span class="servicio-badge">Más solicitado</span>
-        <div class="servicio-name">Masaje Relajante</div>
-        <p class="servicio-desc">Técnica de effleurage y deslizamiento suave para liberar tensión acumulada. Ideal para
-          el estrés cotidiano y para quienes se inician.</p>
-        <div class="servicio-precio" data-price-id="relajante">$45.000<small>60 minutos · A domicilio</small></div>
+        <div class="servicio-img"><img src="masaje_yo.png" alt="Masaje relajante a domicilio — SENDA" loading="lazy">
+        </div>
+        <div class="servicio-body">
+          <div class="servicio-num">01</div>
+          <span class="servicio-badge">Más solicitado</span>
+          <div class="servicio-name">Masaje Relajante</div>
+          <p class="servicio-desc">Técnica de effleurage y deslizamiento suave para liberar tensión acumulada. Ideal
+            para
+            el estrés cotidiano y para quienes se inician.</p>
+          <div class="servicio-precio" data-price-id="relajante">$45.000<small>60 minutos · A domicilio</small></div>
+        </div>
       </div>
       <div class="servicio-card reveal reveal-delay-1">
-        <div class="servicio-num">02</div>
-        <span class="servicio-badge">Especialidad</span>
-        <div class="servicio-name">Masaje Descontracturante</div>
-        <p class="servicio-desc">Trabajo profundo en nódulos y contracturas. Para quienes trabajan muchas horas frente a
-          una pantalla o sienten tensión crónica.</p>
-        <div class="servicio-precio" data-price-id="descontracturante">$45.000<small>60 minutos · A domicilio</small>
+        <div class="servicio-img"><img src="manos masajes mio.png" alt="Masaje descontracturante — SENDA"
+            loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">02</div>
+          <span class="servicio-badge">Especialidad</span>
+          <div class="servicio-name">Masaje Descontracturante</div>
+          <p class="servicio-desc">Trabajo profundo en nódulos y contracturas. Para quienes trabajan muchas horas frente
+            a
+            una pantalla o sienten tensión crónica.</p>
+          <div class="servicio-precio" data-price-id="descontracturante">$45.000<small>60 minutos · A domicilio</small>
+          </div>
         </div>
       </div>
       <div class="servicio-card featured-card reveal reveal-delay-2">
-        <div class="servicio-num">03</div>
-        <span class="servicio-badge">Premium</span>
-        <div class="servicio-name">Masaje con Caña de Bambú</div>
-        <p class="servicio-desc">Técnica con cañas de bambú de distintos tamaños. Presión, calor y movimiento que no
-          pueden replicarse con las manos. Una experiencia única.</p>
-        <div class="servicio-precio" data-price-id="bambu">$50.000<small>60 minutos · A domicilio</small></div>
+        <div class="servicio-img"><img src="bambu.png" alt="Masaje con caña de bambú — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">03</div>
+          <span class="servicio-badge">Premium</span>
+          <div class="servicio-name">Masaje con Caña de Bambú</div>
+          <p class="servicio-desc">Técnica con cañas de bambú de distintos tamaños. Presión, calor y movimiento que no
+            pueden replicarse con las manos. Una experiencia única.</p>
+          <div class="servicio-precio" data-price-id="bambu">$50.000<small>60 minutos · A domicilio</small></div>
+        </div>
       </div>
       <div class="servicio-card reveal">
-        <div class="servicio-num">04</div>
-        <span class="servicio-badge">Más rentable</span>
-        <div class="servicio-name">Masaje para Parejas</div>
-        <p class="servicio-desc">Carlos atiende a los dos en la misma visita. Dos masajes completos, una sola salida,
-          una experiencia compartida en la comodidad del hogar.</p>
-        <div class="servicio-precio" data-price-id="parejas">$80.000<small>2 x 60 min · Una sola visita</small></div>
+        <div class="servicio-img"><img src="masaje_fem_yo.png" alt="Masaje para parejas — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">04</div>
+          <span class="servicio-badge">Más rentable</span>
+          <div class="servicio-name">Masaje para Parejas</div>
+          <p class="servicio-desc">Carlos atiende a los dos en la misma visita. Dos masajes completos, una sola salida,
+            una experiencia compartida en la comodidad del hogar.</p>
+          <div class="servicio-precio" data-price-id="parejas">$80.000<small>2 x 60 min · Una sola visita</small></div>
+        </div>
       </div>
       <div class="servicio-card reveal reveal-delay-1">
-        <div class="servicio-num">05</div>
-        <span class="servicio-badge">Nuevo</span>
-        <div class="servicio-name">Clases de Masajes</div>
-        <p class="servicio-desc">Carlos te enseña las técnicas. Para parejas que quieren aprender a cuidarse mutuamente,
-          o para quien quiere iniciarse profesionalmente.</p>
-        <div class="servicio-precio" data-price-id="clases">Desde $55.000<small>Individual o en pareja</small></div>
+        <div class="servicio-img"><img src="masaje endenu.png" alt="Clases de masajes — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">05</div>
+          <span class="servicio-badge">Nuevo</span>
+          <div class="servicio-name">Clases de Masajes</div>
+          <p class="servicio-desc">Carlos te enseña las técnicas. Para parejas que quieren aprender a cuidarse
+            mutuamente,
+            o para quien quiere iniciarse profesionalmente.</p>
+          <div class="servicio-precio" data-price-id="clases">Desde $55.000<small>Individual o en pareja</small></div>
+        </div>
       </div>
       <div class="servicio-card reveal reveal-delay-2">
-        <div class="servicio-num">06</div>
-        <span class="servicio-badge">Pack</span>
-        <div class="servicio-name">Pack × 5 Sesiones</div>
-        <p class="servicio-desc">Reservás 5 sesiones con descuento. La constancia es lo que transforma el cuerpo. El
-          pack te asegura el compromiso y el ahorro.</p>
-        <div class="servicio-precio" data-price-id="pack5">$200.000<small>Ahorras $25.000</small></div>
+        <div class="servicio-img"><img src="masajeyopie.png" alt="Pack de masajes — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">06</div>
+          <span class="servicio-badge">Pack</span>
+          <div class="servicio-name">Pack × 5 Sesiones</div>
+          <p class="servicio-desc">Reservás 5 sesiones con descuento. La constancia es lo que transforma el cuerpo. El
+            pack te asegura el compromiso y el ahorro.</p>
+          <div class="servicio-precio" data-price-id="pack5">$200.000<small>Ahorras $25.000</small></div>
+        </div>
       </div>
       <div class="servicio-card reveal">
-        <div class="servicio-num">07</div>
-        <span class="servicio-badge">Rendimiento</span>
-        <div class="servicio-name">Masaje Deportivo</div>
-        <p class="servicio-desc">Trabajo intenso sobre grupos musculares exigidos por el entrenamiento. Previene
-          lesiones, acelera la recuperación y mejora la flexibilidad.</p>
-        <div class="servicio-precio" data-price-id="deportivo">$45.000<small>60 minutos · A domicilio</small></div>
+        <div class="servicio-img"><img src="streching.png" alt="Masaje deportivo — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">07</div>
+          <span class="servicio-badge">Rendimiento</span>
+          <div class="servicio-name">Masaje Deportivo</div>
+          <p class="servicio-desc">Trabajo intenso sobre grupos musculares exigidos por el entrenamiento. Previene
+            lesiones, acelera la recuperación y mejora la flexibilidad.</p>
+          <div class="servicio-precio" data-price-id="deportivo">$45.000<small>60 minutos · A domicilio</small></div>
+        </div>
       </div>
       <div class="servicio-card reveal reveal-delay-1">
-        <div class="servicio-num">08</div>
-        <span class="servicio-badge">Flexibilidad</span>
-        <div class="servicio-name">Estiramiento (Stretching)</div>
-        <p class="servicio-desc">Sesión de stretching asistido para mejorar movilidad, aliviar rigidez y prevenir
-          contracturas. Ideal como complemento del masaje o del entrenamiento.</p>
-        <div class="servicio-precio" data-price-id="stretching">$45.000<small>60 minutos · A domicilio</small></div>
+        <div class="servicio-img"><img src="streching.png" alt="Estiramiento stretching — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">08</div>
+          <span class="servicio-badge">Flexibilidad</span>
+          <div class="servicio-name">Estiramiento (Stretching)</div>
+          <p class="servicio-desc">Sesión de stretching asistido para mejorar movilidad, aliviar rigidez y prevenir
+            contracturas. Ideal como complemento del masaje o del entrenamiento.</p>
+          <div class="servicio-precio" data-price-id="stretching">$45.000<small>60 minutos · A domicilio</small></div>
+        </div>
       </div>
       <div class="servicio-card reveal reveal-delay-2">
-        <div class="servicio-num">09</div>
-        <span class="servicio-badge">Bienestar</span>
-        <div class="servicio-name">Masaje Spa</div>
-        <p class="servicio-desc">Experiencia completa de relajación con aromaterapia, toallas calientes y técnicas
-          envolventes. Convertí tu casa en un spa privado.</p>
-        <div class="servicio-precio" data-price-id="spa">$45.000<small>60 minutos · A domicilio</small></div>
+        <div class="servicio-img"><img src="espacio co toallas.png" alt="Masaje spa — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">09</div>
+          <span class="servicio-badge">Bienestar</span>
+          <div class="servicio-name">Masaje Spa</div>
+          <p class="servicio-desc">Experiencia completa de relajación con aromaterapia, toallas calientes y técnicas
+            envolventes. Convertí tu casa en un spa privado.</p>
+          <div class="servicio-precio" data-price-id="spa">$45.000<small>60 minutos · A domicilio</small></div>
+        </div>
       </div>
       <div class="servicio-card featured-card reveal">
-        <div class="servicio-num">10</div>
-        <span class="servicio-badge">Exclusivo</span>
-        <div class="servicio-name">Masaje a 4 Manos</div>
-        <p class="servicio-desc">Dos masajistas trabajan en sincronía sobre tu cuerpo. Cuatro manos, doble estímulo, una
-          experiencia que lleva la relajación a otro nivel.</p>
-        <div class="servicio-precio" data-price-id="4manos">$65.000<small>60 minutos · A domicilio</small></div>
+        <div class="servicio-img"><img src="masaje_yo.png" alt="Masaje a 4 manos — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">10</div>
+          <span class="servicio-badge">Exclusivo</span>
+          <div class="servicio-name">Masaje a 4 Manos</div>
+          <p class="servicio-desc">Dos masajistas trabajan en sincronía sobre tu cuerpo. Cuatro manos, doble estímulo,
+            una
+            experiencia que lleva la relajación a otro nivel.</p>
+          <div class="servicio-precio" data-price-id="4manos">$65.000<small>60 minutos · A domicilio</small></div>
+        </div>
       </div>
       <div class="servicio-card reveal reveal-delay-1">
-        <div class="servicio-num">11</div>
-        <span class="servicio-badge">Estética</span>
-        <div class="servicio-name">Masaje Reductivo</div>
-        <p class="servicio-desc">Técnica firme y localizada que trabaja sobre tejido adiposo, mejora la circulación y
-          ayuda a modelar la silueta. Resultados visibles con constancia.</p>
-        <div class="servicio-precio" data-price-id="reductivo">$45.000<small>60 minutos · A domicilio</small></div>
+        <div class="servicio-img"><img src="manos masajes mio.png" alt="Masaje reductivo — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">11</div>
+          <span class="servicio-badge">Estética</span>
+          <div class="servicio-name">Masaje Reductivo</div>
+          <p class="servicio-desc">Técnica firme y localizada que trabaja sobre tejido adiposo, mejora la circulación y
+            ayuda a modelar la silueta. Resultados visibles con constancia.</p>
+          <div class="servicio-precio" data-price-id="reductivo">$45.000<small>60 minutos · A domicilio</small></div>
+        </div>
       </div>
       <div class="servicio-card reveal reveal-delay-2">
-        <div class="servicio-num">12</div>
-        <span class="servicio-badge">Cuidado</span>
-        <div class="servicio-name">Masaje Prenatal</div>
-        <p class="servicio-desc">Masaje suave y seguro adaptado a cada trimestre del embarazo. Alivia dolores de
-          espalda, piernas cansadas y ayuda a conectar con el bienestar.</p>
-        <div class="servicio-precio" data-price-id="prenatal">$45.000<small>60 minutos · A domicilio</small></div>
+        <div class="servicio-img"><img src="masaje_fem_yo.png" alt="Masaje prenatal — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">12</div>
+          <span class="servicio-badge">Cuidado</span>
+          <div class="servicio-name">Masaje Prenatal</div>
+          <p class="servicio-desc">Masaje suave y seguro adaptado a cada trimestre del embarazo. Alivia dolores de
+            espalda, piernas cansadas y ayuda a conectar con el bienestar.</p>
+          <div class="servicio-precio" data-price-id="prenatal">$45.000<small>60 minutos · A domicilio</small></div>
+        </div>
       </div>
       <div class="servicio-card reveal">
-        <div class="servicio-num">13</div>
-        <span class="servicio-badge">Salud</span>
-        <div class="servicio-name">Drenaje Linfático</div>
-        <p class="servicio-desc">Movimientos lentos y rítmicos que estimulan el sistema linfático. Reduce retención de
-          líquidos, hinchazón y mejora la circulación.</p>
-        <div class="servicio-precio" data-price-id="drenaje">$45.000<small>60 minutos · A domicilio</small></div>
+        <div class="servicio-img"><img src="masajeyopie.png" alt="Drenaje linfático — SENDA" loading="lazy"></div>
+        <div class="servicio-body">
+          <div class="servicio-num">13</div>
+          <span class="servicio-badge">Salud</span>
+          <div class="servicio-name">Drenaje Linfático</div>
+          <p class="servicio-desc">Movimientos lentos y rítmicos que estimulan el sistema linfático. Reduce retención de
+            líquidos, hinchazón y mejora la circulación.</p>
+          <div class="servicio-precio" data-price-id="drenaje">$45.000<small>60 minutos · A domicilio</small></div>
+        </div>
       </div>
     </div>
 
@@ -2129,19 +2242,8 @@
           </div>
         </div>
       </div>
-      <div class="carlos-nums reveal reveal-delay-1">
-        <div class="carlos-num-card">
-          <div class="cn-big">2006</div>
-          <div class="cn-label">Año del título profesional</div>
-        </div>
-        <div class="carlos-num-card">
-          <div class="cn-big">3</div>
-          <div class="cn-label">Técnicas especializadas</div>
-        </div>
-        <div class="carlos-num-card">
-          <div class="cn-big">100%</div>
-          <div class="cn-label">Servicio a domicilio</div>
-        </div>
+      <div class="carlos-photo reveal reveal-delay-1">
+        <img src="masaje_fem_yo.png" alt="Carlos — Masajista profesional desde 2006" loading="lazy">
       </div>
     </div>
   </section>
