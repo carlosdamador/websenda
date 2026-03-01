@@ -1,1201 +1,1321 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SENDA MASAJES · Kit de Lanzamiento · Carlos</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --tierra: #2C1A0E;
-    --bosque: #1E3A2F;
-    --bambú: #8B7355;
-    --crema: #F5EFE0;
-    --oro: #C9A84C;
-    --humo: #E8E0D0;
-    --verde-suave: #4A7C5F;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--crema);
-    color: var(--tierra);
-    font-family: 'Archivo', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-  }
-
-  /* ===== PORTADA / LOGO ===== */
-  .cover {
-    background: var(--bosque);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    padding: 60px 40px;
-  }
-
-  .cover::before {
-    content: '';
-    position: absolute;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.15);
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .cover::after {
-    content: '';
-    position: absolute;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.1);
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  /* LOGO SVG CONTAINER */
-  .logo-container {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    animation: fadeInUp 1.2s ease forwards;
-  }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .logo-emblem {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 32px;
-    display: block;
-  }
-
-  .logo-brand-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 72px;
-    font-weight: 300;
-    letter-spacing: 18px;
-    color: var(--crema);
-    display: block;
-    text-transform: uppercase;
-  }
-
-  .logo-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--oro);
-    letter-spacing: 4px;
-    margin-top: 8px;
-  }
-
-  .logo-line {
-    width: 120px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--oro), transparent);
-    margin: 24px auto;
-  }
-
-  .logo-tagline {
-    font-size: 11px;
-    letter-spacing: 5px;
-    color: rgba(245,239,224,0.5);
-    text-transform: uppercase;
-  }
-
-  /* Kit label */
-  .kit-badge {
-    position: absolute;
-    top: 40px; right: 40px;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(201,168,76,0.6);
-  }
-
-  /* ===== SECCIONES ===== */
-  .section {
-    padding: 80px 60px;
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .section-divider {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--bambú), transparent);
-    margin: 0 auto;
-  }
-
-  .section-num {
-    font-size: 11px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--oro);
-    margin-bottom: 12px;
-  }
-
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
-    font-weight: 300;
-    color: var(--bosque);
-    line-height: 1.1;
-    margin-bottom: 32px;
-  }
-
-  h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 400;
-    color: var(--bosque);
-    margin: 40px 0 16px;
-  }
-
-  p {
-    font-size: 15px;
-    color: #3d2c1e;
-    margin-bottom: 16px;
-    max-width: 720px;
-  }
-
-  /* ===== IDENTIDAD ===== */
-  .identity-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 40px;
-  }
-
-  .identity-card {
-    background: white;
-    border: 1px solid var(--humo);
-    padding: 32px;
-    position: relative;
-  }
-
-  .identity-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 100%;
-    background: var(--oro);
-  }
-
-  .identity-card h4 {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--bambú);
-    margin-bottom: 12px;
-  }
-
-  .identity-card .value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    color: var(--bosque);
-    font-weight: 400;
-  }
-
-  .identity-card p {
-    font-size: 13px;
-    color: #6b5a4a;
-    margin-top: 8px;
-    margin-bottom: 0;
-  }
-
-  /* ===== SERVICIOS Y PRECIOS ===== */
-  .price-section {
-    background: var(--bosque);
-    padding: 80px 60px;
-  }
-
-  .price-section .section-inner {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .price-section h2, .price-section h3 {
-    color: var(--crema);
-  }
-
-  .price-section .section-num {
-    color: var(--oro);
-  }
-
-  .price-section p {
-    color: rgba(245,239,224,0.7);
-  }
-
-  .price-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 40px;
-  }
-
-  .price-card {
-    border: 1px solid rgba(201,168,76,0.3);
-    padding: 36px 28px;
-    text-align: center;
-    position: relative;
-    transition: border-color 0.3s;
-  }
-
-  .price-card.featured {
-    border-color: var(--oro);
-    background: rgba(201,168,76,0.07);
-  }
-
-  .price-card.featured::after {
-    content: '★ RECOMENDADO';
-    position: absolute;
-    top: -12px; left: 50%;
-    transform: translateX(-50%);
-    background: var(--oro);
-    color: var(--bosque);
-    font-size: 9px;
-    letter-spacing: 2px;
-    padding: 4px 12px;
-    font-weight: 600;
-  }
-
-  .price-card h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    color: var(--crema);
-    margin-bottom: 8px;
-  }
-
-  .price-card .duration {
-    font-size: 12px;
-    color: rgba(245,239,224,0.4);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .price-card .price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 42px;
-    color: var(--oro);
-    font-weight: 300;
-  }
-
-  .price-card .currency {
-    font-size: 18px;
-    vertical-align: super;
-  }
-
-  .price-card .price-desc {
-    font-size: 12px;
-    color: rgba(245,239,224,0.5);
-    margin-top: 12px;
-  }
-
-  .pack-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 24px;
-  }
-
-  .pack-card {
-    border: 1px solid rgba(201,168,76,0.2);
-    padding: 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .pack-card .pack-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    color: var(--crema);
-  }
-
-  .pack-card .pack-detail {
-    font-size: 12px;
-    color: rgba(245,239,224,0.4);
-    margin-top: 4px;
-  }
-
-  .pack-card .pack-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    color: var(--oro);
-    text-align: right;
-  }
-
-  .pack-card .pack-save {
-    font-size: 11px;
-    color: var(--verde-suave);
-    text-align: right;
-  }
-
-  /* ===== PLAN DE ACCIÓN ===== */
-  .action-week {
-    margin-bottom: 48px;
-  }
-
-  .week-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 24px;
-  }
-
-  .week-num {
-    width: 56px; height: 56px;
-    border: 1px solid var(--oro);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    color: var(--oro);
-    flex-shrink: 0;
-  }
-
-  .week-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    color: var(--bosque);
-  }
-
-  .week-subtitle {
-    font-size: 12px;
-    color: var(--bambú);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .task-list {
-    border-left: 1px solid var(--humo);
-    padding-left: 32px;
-    margin-left: 28px;
-  }
-
-  .task {
-    display: flex;
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--humo);
-  }
-
-  .task:last-child { border-bottom: none; }
-
-  .task-day {
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--bambú);
-    width: 60px;
-    flex-shrink: 0;
-    padding-top: 2px;
-  }
-
-  .task-content strong {
-    font-weight: 600;
-    color: var(--bosque);
-    display: block;
-    margin-bottom: 4px;
-    font-size: 14px;
-  }
-
-  .task-content span {
-    font-size: 13px;
-    color: #6b5a4a;
-  }
-
-  .task-tool {
-    font-size: 10px;
-    background: var(--humo);
-    padding: 2px 8px;
-    border-radius: 2px;
-    color: var(--bambú);
-    letter-spacing: 1px;
-    margin-top: 6px;
-    display: inline-block;
-  }
-
-  /* ===== ZONAS ===== */
-  .zone-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-    margin-top: 32px;
-  }
-
-  .zone-card {
-    padding: 24px;
-    background: white;
-    border: 1px solid var(--humo);
-  }
-
-  .zone-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    color: var(--bosque);
-    margin-bottom: 8px;
-  }
-
-  .zone-tag {
-    font-size: 10px;
-    background: var(--bosque);
-    color: var(--crema);
-    padding: 3px 10px;
-    letter-spacing: 2px;
-    display: inline-block;
-    margin-bottom: 12px;
-  }
-
-  .zone-tag.premium { background: var(--oro); color: var(--bosque); }
-  .zone-tag.extra { background: var(--verde-suave); }
-
-  .zone-desc {
-    font-size: 13px;
-    color: #6b5a4a;
-    margin: 0;
-  }
-
-  /* ===== HERRAMIENTAS GRATUITAS ===== */
-  .tools-section {
-    background: var(--tierra);
-    padding: 80px 60px;
-  }
-
-  .tools-section .section-inner {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .tools-section h2, .tools-section h3 {
-    color: var(--crema);
-  }
-
-  .tools-section .section-num {
-    color: var(--oro);
-  }
-
-  .tools-section p {
-    color: rgba(245,239,224,0.65);
-  }
-
-  .tool-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 32px;
-  }
-
-  .tool-item {
-    padding: 28px;
-    border: 1px solid rgba(245,239,224,0.1);
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-  }
-
-  .tool-icon {
-    font-size: 32px;
-    flex-shrink: 0;
-  }
-
-  .tool-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    color: var(--crema);
-    margin-bottom: 4px;
-  }
-
-  .tool-desc {
-    font-size: 13px;
-    color: rgba(245,239,224,0.5);
-    margin: 0;
-  }
-
-  .tool-badge {
-    font-size: 9px;
-    background: var(--verde-suave);
-    color: white;
-    padding: 2px 8px;
-    letter-spacing: 2px;
-    display: inline-block;
-    margin-top: 6px;
-  }
-
-  /* ===== TEXTOS LISTOS ===== */
-  .message-box {
-    background: white;
-    border: 1px solid var(--humo);
-    padding: 32px;
-    margin: 24px 0;
-    position: relative;
-  }
-
-  .message-box::before {
-    content: attr(data-label);
-    position: absolute;
-    top: -12px; left: 24px;
-    background: var(--crema);
-    padding: 0 8px;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--bambú);
-  }
-
-  .message-box p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-style: italic;
-    color: var(--bosque);
-    line-height: 1.8;
-    margin: 0;
-    max-width: 100%;
-  }
-
-  /* ===== POLÍTICAS ===== */
-  .policy-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 32px;
-  }
-
-  .policy-item {
-    padding: 28px;
-    border: 1px solid var(--humo);
-    background: white;
-  }
-
-  .policy-title {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--bambú);
-    margin-bottom: 10px;
-  }
-
-  .policy-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    color: var(--bosque);
-    margin: 0;
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    background: var(--bosque);
-    padding: 60px;
-    text-align: center;
-  }
-
-  footer .logo-name-sm {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px;
-    letter-spacing: 10px;
-    color: var(--crema);
-  }
-
-  footer p {
-    color: rgba(245,239,224,0.4);
-    font-size: 12px;
-    letter-spacing: 2px;
-    margin-top: 16px;
-    max-width: 100%;
-    text-align: center;
-  }
-
-  @media (max-width: 768px) {
-    .section { padding: 60px 24px; }
-    .price-grid { grid-template-columns: 1fr; }
-    .pack-grid { grid-template-columns: 1fr; }
-    .identity-grid { grid-template-columns: 1fr; }
-    .zone-grid { grid-template-columns: 1fr; }
-    .tool-grid { grid-template-columns: 1fr; }
-    .policy-grid { grid-template-columns: 1fr; }
-    .logo-brand-name { font-size: 42px; letter-spacing: 10px; }
-    .price-section { padding: 60px 24px; }
-    .tools-section { padding: 60px 24px; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENDA MASAJES · Kit de Lanzamiento · Carlos</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Archivo:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --tierra: #2C1A0E;
+      --bosque: #1E3A2F;
+      --bambú: #8B7355;
+      --crema: #F5EFE0;
+      --oro: #C9A84C;
+      --humo: #E8E0D0;
+      --verde-suave: #4A7C5F;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--crema);
+      color: var(--tierra);
+      font-family: 'Archivo', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ===== PORTADA / LOGO ===== */
+    .cover {
+      background: var(--bosque);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 60px 40px;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* LOGO SVG CONTAINER */
+    .logo-container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo-emblem {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 32px;
+      display: block;
+    }
+
+    .logo-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      font-weight: 300;
+      letter-spacing: 18px;
+      color: var(--crema);
+      display: block;
+      text-transform: uppercase;
+    }
+
+    .logo-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--oro);
+      letter-spacing: 4px;
+      margin-top: 8px;
+    }
+
+    .logo-line {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--oro), transparent);
+      margin: 24px auto;
+    }
+
+    .logo-tagline {
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: rgba(245, 239, 224, 0.5);
+      text-transform: uppercase;
+    }
+
+    /* Kit label */
+    .kit-badge {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.6);
+    }
+
+    /* ===== SECCIONES ===== */
+    .section {
+      padding: 80px 60px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--bambú), transparent);
+      margin: 0 auto;
+    }
+
+    .section-num {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--oro);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--bosque);
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--bosque);
+      margin: 40px 0 16px;
+    }
+
+    p {
+      font-size: 15px;
+      color: #3d2c1e;
+      margin-bottom: 16px;
+      max-width: 720px;
+    }
+
+    /* ===== IDENTIDAD ===== */
+    .identity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .identity-card {
+      background: white;
+      border: 1px solid var(--humo);
+      padding: 32px;
+      position: relative;
+    }
+
+    .identity-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--oro);
+    }
+
+    .identity-card h4 {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bambú);
+      margin-bottom: 12px;
+    }
+
+    .identity-card .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      color: var(--bosque);
+      font-weight: 400;
+    }
+
+    .identity-card p {
+      font-size: 13px;
+      color: #6b5a4a;
+      margin-top: 8px;
+      margin-bottom: 0;
+    }
+
+    /* ===== SERVICIOS Y PRECIOS ===== */
+    .price-section {
+      background: var(--bosque);
+      padding: 80px 60px;
+    }
+
+    .price-section .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .price-section h2,
+    .price-section h3 {
+      color: var(--crema);
+    }
+
+    .price-section .section-num {
+      color: var(--oro);
+    }
+
+    .price-section p {
+      color: rgba(245, 239, 224, 0.7);
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .price-card {
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      padding: 36px 28px;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .price-card.featured {
+      border-color: var(--oro);
+      background: rgba(201, 168, 76, 0.07);
+    }
+
+    .price-card.featured::after {
+      content: '★ RECOMENDADO';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--oro);
+      color: var(--bosque);
+      font-size: 9px;
+      letter-spacing: 2px;
+      padding: 4px 12px;
+      font-weight: 600;
+    }
+
+    .price-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--crema);
+      margin-bottom: 8px;
+    }
+
+    .price-card .duration {
+      font-size: 12px;
+      color: rgba(245, 239, 224, 0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .price-card .price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      color: var(--oro);
+      font-weight: 300;
+    }
+
+    .price-card .currency {
+      font-size: 18px;
+      vertical-align: super;
+    }
+
+    .price-card .price-desc {
+      font-size: 12px;
+      color: rgba(245, 239, 224, 0.5);
+      margin-top: 12px;
+    }
+
+    .pack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .pack-card {
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pack-card .pack-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--crema);
+    }
+
+    .pack-card .pack-detail {
+      font-size: 12px;
+      color: rgba(245, 239, 224, 0.4);
+      margin-top: 4px;
+    }
+
+    .pack-card .pack-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--oro);
+      text-align: right;
+    }
+
+    .pack-card .pack-save {
+      font-size: 11px;
+      color: var(--verde-suave);
+      text-align: right;
+    }
+
+    /* ===== PLAN DE ACCIÓN ===== */
+    .action-week {
+      margin-bottom: 48px;
+    }
+
+    .week-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .week-num {
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--oro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--oro);
+      flex-shrink: 0;
+    }
+
+    .week-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--bosque);
+    }
+
+    .week-subtitle {
+      font-size: 12px;
+      color: var(--bambú);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .task-list {
+      border-left: 1px solid var(--humo);
+      padding-left: 32px;
+      margin-left: 28px;
+    }
+
+    .task {
+      display: flex;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--humo);
+    }
+
+    .task:last-child {
+      border-bottom: none;
+    }
+
+    .task-day {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--bambú);
+      width: 60px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .task-content strong {
+      font-weight: 600;
+      color: var(--bosque);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .task-content span {
+      font-size: 13px;
+      color: #6b5a4a;
+    }
+
+    .task-tool {
+      font-size: 10px;
+      background: var(--humo);
+      padding: 2px 8px;
+      border-radius: 2px;
+      color: var(--bambú);
+      letter-spacing: 1px;
+      margin-top: 6px;
+      display: inline-block;
+    }
+
+    /* ===== ZONAS ===== */
+    .zone-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .zone-card {
+      padding: 24px;
+      background: white;
+      border: 1px solid var(--humo);
+    }
+
+    .zone-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--bosque);
+      margin-bottom: 8px;
+    }
+
+    .zone-tag {
+      font-size: 10px;
+      background: var(--bosque);
+      color: var(--crema);
+      padding: 3px 10px;
+      letter-spacing: 2px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .zone-tag.premium {
+      background: var(--oro);
+      color: var(--bosque);
+    }
+
+    .zone-tag.extra {
+      background: var(--verde-suave);
+    }
+
+    .zone-desc {
+      font-size: 13px;
+      color: #6b5a4a;
+      margin: 0;
+    }
+
+    /* ===== HERRAMIENTAS GRATUITAS ===== */
+    .tools-section {
+      background: var(--tierra);
+      padding: 80px 60px;
+    }
+
+    .tools-section .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .tools-section h2,
+    .tools-section h3 {
+      color: var(--crema);
+    }
+
+    .tools-section .section-num {
+      color: var(--oro);
+    }
+
+    .tools-section p {
+      color: rgba(245, 239, 224, 0.65);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .tool-item {
+      padding: 28px;
+      border: 1px solid rgba(245, 239, 224, 0.1);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .tool-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+
+    .tool-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--crema);
+      margin-bottom: 4px;
+    }
+
+    .tool-desc {
+      font-size: 13px;
+      color: rgba(245, 239, 224, 0.5);
+      margin: 0;
+    }
+
+    .tool-badge {
+      font-size: 9px;
+      background: var(--verde-suave);
+      color: white;
+      padding: 2px 8px;
+      letter-spacing: 2px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    /* ===== TEXTOS LISTOS ===== */
+    .message-box {
+      background: white;
+      border: 1px solid var(--humo);
+      padding: 32px;
+      margin: 24px 0;
+      position: relative;
+    }
+
+    .message-box::before {
+      content: attr(data-label);
+      position: absolute;
+      top: -12px;
+      left: 24px;
+      background: var(--crema);
+      padding: 0 8px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bambú);
+    }
+
+    .message-box p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--bosque);
+      line-height: 1.8;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    /* ===== POLÍTICAS ===== */
+    .policy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .policy-item {
+      padding: 28px;
+      border: 1px solid var(--humo);
+      background: white;
+    }
+
+    .policy-title {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bambú);
+      margin-bottom: 10px;
+    }
+
+    .policy-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--bosque);
+      margin: 0;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bosque);
+      padding: 60px;
+      text-align: center;
+    }
+
+    footer .logo-name-sm {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      letter-spacing: 10px;
+      color: var(--crema);
+    }
+
+    footer p {
+      color: rgba(245, 239, 224, 0.4);
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-top: 16px;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 60px 24px;
+      }
+
+      .price-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pack-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .identity-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .zone-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .policy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-brand-name {
+        font-size: 42px;
+        letter-spacing: 10px;
+      }
+
+      .price-section {
+        padding: 60px 24px;
+      }
+
+      .tools-section {
+        padding: 60px 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ============================= -->
-<!-- SECCIÓN 0: PORTADA / LOGO     -->
-<!-- ============================= -->
-<section class="cover">
-  <span class="kit-badge">Kit de Lanzamiento · 2025</span>
+  <!-- ============================= -->
+  <!-- SECCIÓN 0: PORTADA / LOGO     -->
+  <!-- ============================= -->
+  <section class="cover">
+    <span class="kit-badge">Kit de Lanzamiento · 2025</span>
 
-  <div class="logo-container">
+    <div class="logo-container">
 
-    <!-- LOGO SVG -->
-    <svg class="logo-emblem" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Círculo exterior -->
-      <circle cx="70" cy="70" r="68" stroke="#C9A84C" stroke-width="0.8"/>
-      <!-- Círculo interior -->
-      <circle cx="70" cy="70" r="58" stroke="#C9A84C" stroke-width="0.3" stroke-dasharray="2 4"/>
+      <!-- LOGO SVG -->
+      <svg class="logo-emblem" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Círculo exterior -->
+        <circle cx="70" cy="70" r="68" stroke="#C9A84C" stroke-width="0.8" />
+        <!-- Círculo interior -->
+        <circle cx="70" cy="70" r="58" stroke="#C9A84C" stroke-width="0.3" stroke-dasharray="2 4" />
 
-      <!-- Caña de bambú estilizada (elemento central) -->
-      <!-- Tallo principal -->
-      <rect x="63" y="22" width="5" height="96" rx="2.5" fill="#8B7355" opacity="0.9"/>
-      <rect x="72" y="28" width="5" height="84" rx="2.5" fill="#8B7355" opacity="0.6"/>
+        <!-- Caña de bambú estilizada (elemento central) -->
+        <!-- Tallo principal -->
+        <rect x="63" y="22" width="5" height="96" rx="2.5" fill="#8B7355" opacity="0.9" />
+        <rect x="72" y="28" width="5" height="84" rx="2.5" fill="#8B7355" opacity="0.6" />
 
-      <!-- Nudos del bambú -->
-      <rect x="61" y="40" width="9" height="2" rx="1" fill="#C9A84C"/>
-      <rect x="61" y="58" width="9" height="2" rx="1" fill="#C9A84C"/>
-      <rect x="61" y="76" width="9" height="2" rx="1" fill="#C9A84C"/>
-      <rect x="61" y="94" width="9" height="2" rx="1" fill="#C9A84C"/>
+        <!-- Nudos del bambú -->
+        <rect x="61" y="40" width="9" height="2" rx="1" fill="#C9A84C" />
+        <rect x="61" y="58" width="9" height="2" rx="1" fill="#C9A84C" />
+        <rect x="61" y="76" width="9" height="2" rx="1" fill="#C9A84C" />
+        <rect x="61" y="94" width="9" height="2" rx="1" fill="#C9A84C" />
 
-      <rect x="70" y="45" width="9" height="2" rx="1" fill="#C9A84C" opacity="0.6"/>
-      <rect x="70" y="65" width="9" height="2" rx="1" fill="#C9A84C" opacity="0.6"/>
-      <rect x="70" y="85" width="9" height="2" rx="1" fill="#C9A84C" opacity="0.6"/>
+        <rect x="70" y="45" width="9" height="2" rx="1" fill="#C9A84C" opacity="0.6" />
+        <rect x="70" y="65" width="9" height="2" rx="1" fill="#C9A84C" opacity="0.6" />
+        <rect x="70" y="85" width="9" height="2" rx="1" fill="#C9A84C" opacity="0.6" />
 
-      <!-- Hojas -->
-      <path d="M68 30 Q55 18 42 22 Q52 28 68 38 Z" fill="#4A7C5F" opacity="0.8"/>
-      <path d="M65 48 Q50 40 40 44 Q52 50 65 56 Z" fill="#4A7C5F" opacity="0.6"/>
-      <path d="M77 35 Q88 22 100 24 Q90 31 77 42 Z" fill="#4A7C5F" opacity="0.5"/>
+        <!-- Hojas -->
+        <path d="M68 30 Q55 18 42 22 Q52 28 68 38 Z" fill="#4A7C5F" opacity="0.8" />
+        <path d="M65 48 Q50 40 40 44 Q52 50 65 56 Z" fill="#4A7C5F" opacity="0.6" />
+        <path d="M77 35 Q88 22 100 24 Q90 31 77 42 Z" fill="#4A7C5F" opacity="0.5" />
 
-      <!-- Manos / palma estilizada debajo -->
-      <path d="M40 108 Q50 95 70 93 Q90 95 100 108 Q90 118 70 120 Q50 118 40 108Z" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+        <!-- Manos / palma estilizada debajo -->
+        <path d="M40 108 Q50 95 70 93 Q90 95 100 108 Q90 118 70 120 Q50 118 40 108Z" fill="none" stroke="#C9A84C"
+          stroke-width="0.8" opacity="0.5" />
 
-      <!-- Puntos cardinales decorativos -->
-      <circle cx="70" cy="8" r="2" fill="#C9A84C" opacity="0.4"/>
-      <circle cx="70" cy="132" r="2" fill="#C9A84C" opacity="0.4"/>
-      <circle cx="8" cy="70" r="2" fill="#C9A84C" opacity="0.4"/>
-      <circle cx="132" cy="70" r="2" fill="#C9A84C" opacity="0.4"/>
-    </svg>
+        <!-- Puntos cardinales decorativos -->
+        <circle cx="70" cy="8" r="2" fill="#C9A84C" opacity="0.4" />
+        <circle cx="70" cy="132" r="2" fill="#C9A84C" opacity="0.4" />
+        <circle cx="8" cy="70" r="2" fill="#C9A84C" opacity="0.4" />
+        <circle cx="132" cy="70" r="2" fill="#C9A84C" opacity="0.4" />
+      </svg>
 
-    <span class="logo-brand-name">SENDA</span>
-    <div class="logo-line"></div>
-    <div class="logo-sub">Masajes a Domicilio</div>
-    <div class="logo-line"></div>
-    <div class="logo-tagline">Zona Norte · CABA · Buenos Aires</div>
-  </div>
-</section>
-
-<!-- ============================= -->
-<!-- SECCIÓN 1: IDENTIDAD          -->
-<!-- ============================= -->
-<section class="section">
-  <div class="section-num">01 · Identidad de Marca</div>
-  <h2>Todo empieza con<br><em>un nombre</em></h2>
-  <p>El nombre <strong>SENDA</strong> significa camino, trayecto. Es el camino hacia el bienestar que Carlos acompaña. Es corto, elegante, fácil de recordar y funciona perfectamente para SEO combinado con las palabras clave geográficas.</p>
-
-  <div class="identity-grid">
-    <div class="identity-card">
-      <h4>Nombre de Marca</h4>
-      <div class="value">SENDA</div>
-      <p>Masajes a Domicilio</p>
+      <span class="logo-brand-name">SENDA</span>
+      <div class="logo-line"></div>
+      <div class="logo-sub">Masajes a Domicilio</div>
+      <div class="logo-line"></div>
+      <div class="logo-tagline">Zona Norte · CABA · Buenos Aires</div>
     </div>
-    <div class="identity-card">
-      <h4>Nombre SEO Completo</h4>
-      <div class="value" style="font-size:18px;">Senda Masajes a Domicilio Zona Norte</div>
-      <p>Para Google, Instagram y Google Maps</p>
-    </div>
-    <div class="identity-card">
-      <h4>URL / Perfil Digital</h4>
-      <div class="value" style="font-size:18px;">@sendamasajes</div>
-      <p>Instagram · WhatsApp · Google</p>
-    </div>
-    <div class="identity-card">
-      <h4>Masajista</h4>
-      <div class="value">Carlos</div>
-      <p>Masajista Profesional recibido en 2006 · Descontracturante y Relajante</p>
-    </div>
-    <div class="identity-card">
-      <h4>Concepto Diferenciador</h4>
-      <div class="value" style="font-size:18px;">100% a domicilio</div>
-      <p>Tu casa, tus tiempos, tu comodidad. Sin traslados, sin esperas.</p>
-    </div>
-    <div class="identity-card">
-      <h4>Público Objetivo</h4>
-      <div class="value" style="font-size:18px;">Parejas & Mujeres</div>
-      <p>Matrimonios y parejas en Zona Norte y CABA. Mujeres que buscan bienestar seguro.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-divider"></div>
+  <!-- ============================= -->
+  <!-- SECCIÓN 1: IDENTIDAD          -->
+  <!-- ============================= -->
+  <section class="section">
+    <div class="section-num">01 · Identidad de Marca</div>
+    <h2>Todo empieza con<br><em>un nombre</em></h2>
+    <p>El nombre <strong>SENDA</strong> significa camino, trayecto. Es el camino hacia el bienestar que Carlos acompaña.
+      Es corto, elegante, fácil de recordar y funciona perfectamente para SEO combinado con las palabras clave
+      geográficas.</p>
 
-<!-- ============================= -->
-<!-- SECCIÓN 2: SERVICIOS Y PRECIOS -->
-<!-- ============================= -->
-<section class="price-section">
-  <div class="section-inner">
-    <div class="section-num">02 · Servicios & Precios</div>
-    <h2>Lo que ofrecés,<br><em>lo que cobrás</em></h2>
-    <p>Precios claros desde el primer mensaje. Esto genera confianza y filtra clientes de calidad.</p>
-
-    <h3>Sesiones Individuales</h3>
-    <div class="price-grid">
-      <div class="price-card">
-        <h4>Masaje Relajante</h4>
-        <div class="duration">60 minutos</div>
-        <div class="price"><span class="currency">$</span>45.000</div>
-        <div class="price-desc">A domicilio · Zona Norte y CABA</div>
+    <div class="identity-grid">
+      <div class="identity-card">
+        <h4>Nombre de Marca</h4>
+        <div class="value">SENDA</div>
+        <p>Masajes a Domicilio</p>
       </div>
-      <div class="price-card featured">
-        <h4>Masaje Descontracturante</h4>
-        <div class="duration">60 minutos</div>
-        <div class="price"><span class="currency">$</span>45.000</div>
-        <div class="price-desc">Especialidad del masajista · Título profesional 2006</div>
+      <div class="identity-card">
+        <h4>Nombre SEO Completo</h4>
+        <div class="value" style="font-size:18px;">Senda Masajes a Domicilio Zona Norte</div>
+        <p>Para Google, Instagram y Google Maps</p>
       </div>
-      <div class="price-card">
-        <h4>Masaje con Bambú</h4>
-        <div class="duration">60 minutos</div>
-        <div class="price"><span class="currency">$</span>50.000</div>
-        <div class="price-desc">Incluye caña de bambú · Experiencia premium</div>
+      <div class="identity-card">
+        <h4>URL / Perfil Digital</h4>
+        <div class="value" style="font-size:18px;">@sendamasaje</div>
+        <p>Instagram · WhatsApp · Google</p>
+      </div>
+      <div class="identity-card">
+        <h4>Masajista</h4>
+        <div class="value">Carlos</div>
+        <p>Masajista Profesional recibido en 2006 · Descontracturante y Relajante</p>
+      </div>
+      <div class="identity-card">
+        <h4>Concepto Diferenciador</h4>
+        <div class="value" style="font-size:18px;">100% a domicilio</div>
+        <p>Tu casa, tus tiempos, tu comodidad. Sin traslados, sin esperas.</p>
+      </div>
+      <div class="identity-card">
+        <h4>Público Objetivo</h4>
+        <div class="value" style="font-size:18px;">Parejas & Mujeres</div>
+        <p>Matrimonios y parejas en Zona Norte y CABA. Mujeres que buscan bienestar seguro.</p>
       </div>
     </div>
+  </section>
 
-    <h3>Parejas & Matrimonios ⭐</h3>
-    <div class="price-grid">
-      <div class="price-card featured">
-        <h4>Masaje para Dos</h4>
-        <div class="duration">2 × 60 minutos</div>
-        <div class="price"><span class="currency">$</span>80.000</div>
-        <div class="price-desc">Una sola salida · Doble ingreso · Producto estrella</div>
+  <div class="section-divider"></div>
+
+  <!-- ============================= -->
+  <!-- SECCIÓN 2: SERVICIOS Y PRECIOS -->
+  <!-- ============================= -->
+  <section class="price-section">
+    <div class="section-inner">
+      <div class="section-num">02 · Servicios & Precios</div>
+      <h2>Lo que ofrecés,<br><em>lo que cobrás</em></h2>
+      <p>Precios claros desde el primer mensaje. Esto genera confianza y filtra clientes de calidad.</p>
+
+      <h3>Sesiones Individuales</h3>
+      <div class="price-grid">
+        <div class="price-card">
+          <h4>Masaje Relajante</h4>
+          <div class="duration">60 minutos</div>
+          <div class="price"><span class="currency">$</span>45.000</div>
+          <div class="price-desc">A domicilio · Zona Norte y CABA</div>
+        </div>
+        <div class="price-card featured">
+          <h4>Masaje Descontracturante</h4>
+          <div class="duration">60 minutos</div>
+          <div class="price"><span class="currency">$</span>45.000</div>
+          <div class="price-desc">Especialidad del masajista · Título profesional 2006</div>
+        </div>
+        <div class="price-card">
+          <h4>Masaje con Bambú</h4>
+          <div class="duration">60 minutos</div>
+          <div class="price"><span class="currency">$</span>50.000</div>
+          <div class="price-desc">Incluye caña de bambú · Experiencia premium</div>
+        </div>
       </div>
-      <div class="price-card">
-        <h4>Masaje Bambú para Dos</h4>
-        <div class="duration">2 × 60 minutos</div>
-        <div class="price"><span class="currency">$</span>90.000</div>
-        <div class="price-desc">Con caña de bambú para ambos</div>
+
+      <h3>Parejas & Matrimonios ⭐</h3>
+      <div class="price-grid">
+        <div class="price-card featured">
+          <h4>Masaje para Dos</h4>
+          <div class="duration">2 × 60 minutos</div>
+          <div class="price"><span class="currency">$</span>80.000</div>
+          <div class="price-desc">Una sola salida · Doble ingreso · Producto estrella</div>
+        </div>
+        <div class="price-card">
+          <h4>Masaje Bambú para Dos</h4>
+          <div class="duration">2 × 60 minutos</div>
+          <div class="price"><span class="currency">$</span>90.000</div>
+          <div class="price-desc">Con caña de bambú para ambos</div>
+        </div>
+        <div class="price-card">
+          <h4>Masaje en Santa Bárbara</h4>
+          <div class="duration">60 minutos</div>
+          <div class="price"><span class="currency">$</span>45.000</div>
+          <div class="price-desc">En el espacio confirmado del barrio cerrado</div>
+        </div>
       </div>
-      <div class="price-card">
-        <h4>Masaje en Santa Bárbara</h4>
-        <div class="duration">60 minutos</div>
-        <div class="price"><span class="currency">$</span>45.000</div>
-        <div class="price-desc">En el espacio confirmado del barrio cerrado</div>
+
+      <h3>Packs con Descuento</h3>
+      <div class="pack-grid">
+        <div class="pack-card">
+          <div>
+            <div class="pack-name">Pack × 5 Individual</div>
+            <div class="pack-detail">5 sesiones relajante o descontracturante</div>
+          </div>
+          <div>
+            <div class="pack-price">$200.000</div>
+            <div class="pack-save">✓ Ahorrás $25.000</div>
+          </div>
+        </div>
+        <div class="pack-card">
+          <div>
+            <div class="pack-name">Pack × 5 Parejas</div>
+            <div class="pack-detail">5 salidas para matrimonio</div>
+          </div>
+          <div>
+            <div class="pack-price">$360.000</div>
+            <div class="pack-save">✓ Ahorrás $40.000</div>
+          </div>
+        </div>
+        <div class="pack-card">
+          <div>
+            <div class="pack-name">Adicional por Distancia</div>
+            <div class="pack-detail">Más de 25 km desde San Isidro</div>
+          </div>
+          <div>
+            <div class="pack-price">+$2.000/km</div>
+            <div class="pack-save">o traslado a acordar</div>
+          </div>
+        </div>
+        <div class="pack-card">
+          <div>
+            <div class="pack-name">Regalo / Gift Card</div>
+            <div class="pack-detail">Para regalar en cualquier monto</div>
+          </div>
+          <div>
+            <div class="pack-price">Valor libre</div>
+            <div class="pack-save">Por transferencia</div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <h3>Packs con Descuento</h3>
-    <div class="pack-grid">
-      <div class="pack-card">
+  <!-- ============================= -->
+  <!-- SECCIÓN 3: ZONAS              -->
+  <!-- ============================= -->
+  <section class="section">
+    <div class="section-num">03 · Zonas de Cobertura</div>
+    <h2>Dónde llegás,<br><em>dónde cobrás más</em></h2>
+    <p>Tu base de operaciones es Zona Norte. Cuanto más cerca, más sencilla la logística. Cuanto más lejos, cobrás el
+      diferencial de distancia sin culpa — es tu tiempo y tu auto.</p>
+
+    <div class="zone-grid">
+      <div class="zone-card">
+        <div class="zone-name">Zona Núcleo</div>
+        <span class="zone-tag premium">SIN ADICIONAL</span>
+        <p class="zone-desc">San Isidro · Martínez · Acassuso · Olivos · Vicente López · La Lucila</p>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Zona Ampliada</div>
+        <span class="zone-tag">CON ADICIONAL</span>
+        <p class="zone-desc">Nordelta · Tigre (incluye Santa Bárbara) · Florida · Palermo · Belgrano · Recoleta · CABA
+          completa</p>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Cualquier Zona</div>
+        <span class="zone-tag extra">TRASLADO A ACORDAR</span>
+        <p class="zone-desc">Más de 25 km · Si la tarifa de traslado está acordada, Carlos llega donde sea necesario</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================= -->
+  <!-- SECCIÓN 4: PLAN DE ACCIÓN     -->
+  <!-- ============================= -->
+  <section class="section">
+    <div class="section-num">04 · Plan de Acción</div>
+    <h2>Semana a semana,<br><em>cliente a cliente</em></h2>
+    <p>Todo con herramientas gratuitas. Sin gastar un solo peso en publicidad al principio. La velocidad para conseguir
+      los primeros clientes está en las personas que ya te conocen.</p>
+
+    <!-- SEMANA 1 -->
+    <div class="action-week">
+      <div class="week-header">
+        <div class="week-num">1</div>
         <div>
-          <div class="pack-name">Pack × 5 Individual</div>
-          <div class="pack-detail">5 sesiones relajante o descontracturante</div>
+          <div class="week-title">Bases digitales en 7 días</div>
+          <div class="week-subtitle">Herramientas gratuitas · Sin inversión</div>
         </div>
+      </div>
+      <div class="task-list">
+        <div class="task">
+          <div class="task-day">Día 1</div>
+          <div class="task-content">
+            <strong>Crear cuenta WhatsApp Business</strong>
+            <span>Nombre: "Senda Masajes · Carlos" · Foto con el logo · Estado: "Masajista Profesional a Domicilio —
+              Zona Norte y CABA. Turnos por acá 📲" · Configurar respuesta automática fuera de horario.</span>
+            <span class="task-tool">📱 WhatsApp Business · Gratis</span>
+          </div>
+        </div>
+        <div class="task">
+          <div class="task-day">Día 2</div>
+          <div class="task-content">
+            <strong>Crear perfil Instagram @sendamasaje</strong>
+            <span>Foto de perfil: el logo. Bio: "💆 Masajista Profesional recibido 2006 | Relajante · Descontracturante
+              · Bambú | 🚗 A Domicilio — Zona Norte & CABA | 📍 También en Santa Bárbara, Tigre | 🤝 Parejas y mujeres |
+              ☎️ Turnos por WhatsApp"</span>
+            <span class="task-tool">📸 Instagram · Gratis</span>
+          </div>
+        </div>
+        <div class="task">
+          <div class="task-day">Día 3</div>
+          <div class="task-content">
+            <strong>Dar de alta en Google Business Profile</strong>
+            <span>Ir a business.google.com · Crear perfil como "Senda Masajes a Domicilio Zona Norte" · Categoría:
+              Masajista · Zona de cobertura: San Isidro, Martínez, Nordelta, Tigre, CABA · Agregar fotos de camilla,
+              aceites, espacio. CLAVE: esto hace que aparezcas cuando buscan "masajes a domicilio San Isidro" en
+              Google.</span>
+            <span class="task-tool">🗺️ Google Business Profile · Gratis</span>
+          </div>
+        </div>
+        <div class="task">
+          <div class="task-day">Día 4</div>
+          <div class="task-content">
+            <strong>Escribir a TODOS los contactos anteriores</strong>
+            <span>Pacientes viejos, matrimonios que atendiste, conocidos. Usar el mensaje personalizado de esta sección.
+              Este paso solo puede darte los primeros 3 a 5 turnos.</span>
+            <span class="task-tool">📲 WhatsApp personal · Gratis</span>
+          </div>
+        </div>
+        <div class="task">
+          <div class="task-day">Día 5</div>
+          <div class="task-content">
+            <strong>Primer post de lanzamiento en Instagram</strong>
+            <span>Foto de la camilla armada en un ambiente prolijo. Texto del post en la sección de contenido más
+              abajo.</span>
+            <span class="task-tool">📸 Instagram · Canva gratis para el arte</span>
+          </div>
+        </div>
+        <div class="task">
+          <div class="task-day">Día 6–7</div>
+          <div class="task-content">
+            <strong>Subirse a MercadoPago y configurar cobros</strong>
+            <span>Crear cuenta en MercadoPago para cobrar con QR, transferencia o link de pago. También activar link de
+              cobro para enviar por WhatsApp. Aceptar efectivo siempre como opción.</span>
+            <span class="task-tool">💳 MercadoPago · Gratis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANA 2 -->
+    <div class="action-week">
+      <div class="week-header">
+        <div class="week-num">2</div>
         <div>
-          <div class="pack-price">$200.000</div>
-          <div class="pack-save">✓ Ahorrás $25.000</div>
+          <div class="week-title">Alianzas y amplificación</div>
+          <div class="week-subtitle">Conseguir recomendaciones sin gastar</div>
         </div>
       </div>
-      <div class="pack-card">
+      <div class="task-list">
+        <div class="task">
+          <div class="task-day">Día 8</div>
+          <div class="task-content">
+            <strong>Publicar en grupos de Facebook de Zona Norte</strong>
+            <span>Grupos como "Nordelta Vende y Compra", "San Isidro Comunidad", "Martínez Barrio". Publicar el texto de
+              presentación con foto y número de WhatsApp. Hacer esto 1 vez por semana rotando grupos.</span>
+            <span class="task-tool">👥 Facebook Grupos · Gratis</span>
+          </div>
+        </div>
+        <div class="task">
+          <div class="task-day">Día 9</div>
+          <div class="task-content">
+            <strong>Contactar 3 gimnasios o estudios de pilates de zona norte</strong>
+            <span>Ir en persona o escribir por Instagram. Propuesta: "Puedo complementar tu servicio ofreciendo masajes
+              a tus clientes. No competimos, nos complementamos." Ofrecer una sesión de muestra al instructor.</span>
+            <span class="task-tool">🏃 Alianzas · Inversión: 1 masaje gratis</span>
+          </div>
+        </div>
+        <div class="task">
+          <div class="task-day">Día 10</div>
+          <div class="task-content">
+            <strong>Crear perfil en Linktree (gratis) para el bio de Instagram</strong>
+            <span>Un enlace que agrupa: WhatsApp para turnos, Google Maps (tu perfil), precios. Así el cliente hace un
+              clic desde Instagram y llega directo a vos.</span>
+            <span class="task-tool">🔗 Linktr.ee · Gratis</span>
+          </div>
+        </div>
+        <div class="task">
+          <div class="task-day">Día 11–14</div>
+          <div class="task-content">
+            <strong>Pedir reseñas en Google a los primeros clientes</strong>
+            <span>Después de cada sesión, enviar: "¿Podés dejarme una reseña en Google? Me ayuda mucho a que más
+              personas me encuentren. Acá el link: [tu perfil de Google]". 5 reseñas ya te ponen muy arriba en los
+              resultados locales.</span>
+            <span class="task-tool">⭐ Google Reviews · Gratis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANA 3-4 -->
+    <div class="action-week">
+      <div class="week-header">
+        <div class="week-num">3–4</div>
         <div>
-          <div class="pack-name">Pack × 5 Parejas</div>
-          <div class="pack-detail">5 salidas para matrimonio</div>
-        </div>
-        <div>
-          <div class="pack-price">$360.000</div>
-          <div class="pack-save">✓ Ahorrás $40.000</div>
+          <div class="week-title">Consolidar y crecer</div>
+          <div class="week-subtitle">Cuando ya tenés los primeros clientes</div>
         </div>
       </div>
-      <div class="pack-card">
-        <div>
-          <div class="pack-name">Adicional por Distancia</div>
-          <div class="pack-detail">Más de 25 km desde San Isidro</div>
+      <div class="task-list">
+        <div class="task">
+          <div class="task-day">Semana 3</div>
+          <div class="task-content">
+            <strong>Crear la primera web gratuita</strong>
+            <span>Usar Google Sites (sites.google.com) o Bio.site. Nombre: "Senda Masajes a Domicilio Zona Norte".
+              Incluir: servicios, precios, zonas, botón de WhatsApp, fotos, y las primeras reseñas. Una web sencilla ya
+              te diferencia del 80% de los masajistas.</span>
+            <span class="task-tool">🌐 Google Sites · Gratis · URL gratuita incluida</span>
+          </div>
         </div>
-        <div>
-          <div class="pack-price">+$2.000/km</div>
-          <div class="pack-save">o traslado a acordar</div>
+        <div class="task">
+          <div class="task-day">Semana 3</div>
+          <div class="task-content">
+            <strong>Sistema de referidos activo</strong>
+            <span>Implementar: "Por cada persona que me recomendás y toma una sesión, tu próxima sesión tiene un 10% de
+              descuento." Comunicarlo a todos los clientes activos.</span>
+            <span class="task-tool">🤝 Referidos · Costo: solo el descuento</span>
+          </div>
         </div>
-      </div>
-      <div class="pack-card">
-        <div>
-          <div class="pack-name">Regalo / Gift Card</div>
-          <div class="pack-detail">Para regalar en cualquier monto</div>
-        </div>
-        <div>
-          <div class="pack-price">Valor libre</div>
-          <div class="pack-save">Por transferencia</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================= -->
-<!-- SECCIÓN 3: ZONAS              -->
-<!-- ============================= -->
-<section class="section">
-  <div class="section-num">03 · Zonas de Cobertura</div>
-  <h2>Dónde llegás,<br><em>dónde cobrás más</em></h2>
-  <p>Tu base de operaciones es Zona Norte. Cuanto más cerca, más sencilla la logística. Cuanto más lejos, cobrás el diferencial de distancia sin culpa — es tu tiempo y tu auto.</p>
-
-  <div class="zone-grid">
-    <div class="zone-card">
-      <div class="zone-name">Zona Núcleo</div>
-      <span class="zone-tag premium">SIN ADICIONAL</span>
-      <p class="zone-desc">San Isidro · Martínez · Acassuso · Olivos · Vicente López · La Lucila</p>
-    </div>
-    <div class="zone-card">
-      <div class="zone-name">Zona Ampliada</div>
-      <span class="zone-tag">CON ADICIONAL</span>
-      <p class="zone-desc">Nordelta · Tigre (incluye Santa Bárbara) · Florida · Palermo · Belgrano · Recoleta · CABA completa</p>
-    </div>
-    <div class="zone-card">
-      <div class="zone-name">Cualquier Zona</div>
-      <span class="zone-tag extra">TRASLADO A ACORDAR</span>
-      <p class="zone-desc">Más de 25 km · Si la tarifa de traslado está acordada, Carlos llega donde sea necesario</p>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ============================= -->
-<!-- SECCIÓN 4: PLAN DE ACCIÓN     -->
-<!-- ============================= -->
-<section class="section">
-  <div class="section-num">04 · Plan de Acción</div>
-  <h2>Semana a semana,<br><em>cliente a cliente</em></h2>
-  <p>Todo con herramientas gratuitas. Sin gastar un solo peso en publicidad al principio. La velocidad para conseguir los primeros clientes está en las personas que ya te conocen.</p>
-
-  <!-- SEMANA 1 -->
-  <div class="action-week">
-    <div class="week-header">
-      <div class="week-num">1</div>
-      <div>
-        <div class="week-title">Bases digitales en 7 días</div>
-        <div class="week-subtitle">Herramientas gratuitas · Sin inversión</div>
-      </div>
-    </div>
-    <div class="task-list">
-      <div class="task">
-        <div class="task-day">Día 1</div>
-        <div class="task-content">
-          <strong>Crear cuenta WhatsApp Business</strong>
-          <span>Nombre: "Senda Masajes · Carlos" · Foto con el logo · Estado: "Masajista Profesional a Domicilio — Zona Norte y CABA. Turnos por acá 📲" · Configurar respuesta automática fuera de horario.</span>
-          <span class="task-tool">📱 WhatsApp Business · Gratis</span>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-day">Día 2</div>
-        <div class="task-content">
-          <strong>Crear perfil Instagram @sendamasajes</strong>
-          <span>Foto de perfil: el logo. Bio: "💆 Masajista Profesional recibido 2006 | Relajante · Descontracturante · Bambú | 🚗 A Domicilio — Zona Norte & CABA | 📍 También en Santa Bárbara, Tigre | 🤝 Parejas y mujeres | ☎️ Turnos por WhatsApp"</span>
-          <span class="task-tool">📸 Instagram · Gratis</span>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-day">Día 3</div>
-        <div class="task-content">
-          <strong>Dar de alta en Google Business Profile</strong>
-          <span>Ir a business.google.com · Crear perfil como "Senda Masajes a Domicilio Zona Norte" · Categoría: Masajista · Zona de cobertura: San Isidro, Martínez, Nordelta, Tigre, CABA · Agregar fotos de camilla, aceites, espacio. CLAVE: esto hace que aparezcas cuando buscan "masajes a domicilio San Isidro" en Google.</span>
-          <span class="task-tool">🗺️ Google Business Profile · Gratis</span>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-day">Día 4</div>
-        <div class="task-content">
-          <strong>Escribir a TODOS los contactos anteriores</strong>
-          <span>Pacientes viejos, matrimonios que atendiste, conocidos. Usar el mensaje personalizado de esta sección. Este paso solo puede darte los primeros 3 a 5 turnos.</span>
-          <span class="task-tool">📲 WhatsApp personal · Gratis</span>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-day">Día 5</div>
-        <div class="task-content">
-          <strong>Primer post de lanzamiento en Instagram</strong>
-          <span>Foto de la camilla armada en un ambiente prolijo. Texto del post en la sección de contenido más abajo.</span>
-          <span class="task-tool">📸 Instagram · Canva gratis para el arte</span>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-day">Día 6–7</div>
-        <div class="task-content">
-          <strong>Subirse a MercadoPago y configurar cobros</strong>
-          <span>Crear cuenta en MercadoPago para cobrar con QR, transferencia o link de pago. También activar link de cobro para enviar por WhatsApp. Aceptar efectivo siempre como opción.</span>
-          <span class="task-tool">💳 MercadoPago · Gratis</span>
+        <div class="task">
+          <div class="task-day">Semana 4</div>
+          <div class="task-content">
+            <strong>Empezar a vender packs activamente</strong>
+            <span>Después de la 2da sesión con un cliente, ofrecerle el pack x5. "Te reservo los turnos y además tenés
+              descuento." Los packs son ingresos garantizados por adelantado.</span>
+            <span class="task-tool">📦 Oferta directa · Post-sesión</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- SEMANA 2 -->
-  <div class="action-week">
-    <div class="week-header">
-      <div class="week-num">2</div>
-      <div>
-        <div class="week-title">Alianzas y amplificación</div>
-        <div class="week-subtitle">Conseguir recomendaciones sin gastar</div>
-      </div>
+  <div class="section-divider"></div>
+
+  <!-- ============================= -->
+  <!-- SECCIÓN 5: TEXTOS LISTOS      -->
+  <!-- ============================= -->
+  <section class="section">
+    <div class="section-num">05 · Textos Listos para Copiar</div>
+    <h2>Palabras que<br><em>consiguen clientes</em></h2>
+    <p>Copiá y mandá. Cada texto está pensado para generar una respuesta, no solo para informar.</p>
+
+    <h3>Mensaje para Contactos Anteriores (WhatsApp)</h3>
+    <div class="message-box" data-label="WHATSAPP · CONTACTOS VIEJOS">
+      <p>"Hola [nombre], ¿cómo estás? Te escribo porque retomé los masajes de manera profesional. Estoy ofreciendo
+        masajes a domicilio en zona norte y CABA — llego con todo, vos no te movés de casa. Hago relajante,
+        descontracturante y con bambú. Si te interesa o conocés a alguien que lo necesite, avisame. Un abrazo, Carlos de
+        Senda Masajes."</p>
     </div>
-    <div class="task-list">
-      <div class="task">
-        <div class="task-day">Día 8</div>
-        <div class="task-content">
-          <strong>Publicar en grupos de Facebook de Zona Norte</strong>
-          <span>Grupos como "Nordelta Vende y Compra", "San Isidro Comunidad", "Martínez Barrio". Publicar el texto de presentación con foto y número de WhatsApp. Hacer esto 1 vez por semana rotando grupos.</span>
-          <span class="task-tool">👥 Facebook Grupos · Gratis</span>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-day">Día 9</div>
-        <div class="task-content">
-          <strong>Contactar 3 gimnasios o estudios de pilates de zona norte</strong>
-          <span>Ir en persona o escribir por Instagram. Propuesta: "Puedo complementar tu servicio ofreciendo masajes a tus clientes. No competimos, nos complementamos." Ofrecer una sesión de muestra al instructor.</span>
-          <span class="task-tool">🏃 Alianzas · Inversión: 1 masaje gratis</span>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-day">Día 10</div>
-        <div class="task-content">
-          <strong>Crear perfil en Linktree (gratis) para el bio de Instagram</strong>
-          <span>Un enlace que agrupa: WhatsApp para turnos, Google Maps (tu perfil), precios. Así el cliente hace un clic desde Instagram y llega directo a vos.</span>
-          <span class="task-tool">🔗 Linktr.ee · Gratis</span>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-day">Día 11–14</div>
-        <div class="task-content">
-          <strong>Pedir reseñas en Google a los primeros clientes</strong>
-          <span>Después de cada sesión, enviar: "¿Podés dejarme una reseña en Google? Me ayuda mucho a que más personas me encuentren. Acá el link: [tu perfil de Google]". 5 reseñas ya te ponen muy arriba en los resultados locales.</span>
-          <span class="task-tool">⭐ Google Reviews · Gratis</span>
-        </div>
-      </div>
+
+    <h3>Post de Lanzamiento Instagram</h3>
+    <div class="message-box" data-label="INSTAGRAM · POST LANZAMIENTO">
+      <p>"Llegó el momento de que el bienestar llegue a tu puerta. 🌿 Soy Carlos, masajista profesional recibido en
+        2006. Masajes relajantes, descontracturantes y con bambú — directamente en tu casa, en Zona Norte y CABA. No
+        necesitás manejar, no necesitás apurarte. Yo llevo todo. 🎋 También para parejas: los dos en su casa, una
+        experiencia completa. Turnos por WhatsApp 👇 ¿Cuándo arrancamos? #masajesadomicilio #masajesnorte
+        #masajessanisidro #masajesnordelta #masajesmartinez #masajesCABA #bienestar #relajacion #descontracturante"</p>
     </div>
-  </div>
 
-  <!-- SEMANA 3-4 -->
-  <div class="action-week">
-    <div class="week-header">
-      <div class="week-num">3–4</div>
-      <div>
-        <div class="week-title">Consolidar y crecer</div>
-        <div class="week-subtitle">Cuando ya tenés los primeros clientes</div>
-      </div>
+    <h3>Mensaje para Grupos de Facebook / Vecinos</h3>
+    <div class="message-box" data-label="FACEBOOK GRUPOS · ZONA NORTE">
+      <p>"Hola comunidad! Soy Carlos, masajista profesional (recibido 2006). Ofrezco masajes a domicilio en Zona Norte y
+        CABA — llevo camilla y todos los elementos. Relajante, descontracturante y con bambú. También para parejas en
+        casa (1 sola visita, masaje para los dos). Zona sin cargo: San Isidro, Martínez, Olivos, Vicente López.
+        Nordelta, Tigre y CABA también. Precios y disponibilidad por WhatsApp. ¡Saludos a todos!"</p>
     </div>
-    <div class="task-list">
-      <div class="task">
-        <div class="task-day">Semana 3</div>
-        <div class="task-content">
-          <strong>Crear la primera web gratuita</strong>
-          <span>Usar Google Sites (sites.google.com) o Bio.site. Nombre: "Senda Masajes a Domicilio Zona Norte". Incluir: servicios, precios, zonas, botón de WhatsApp, fotos, y las primeras reseñas. Una web sencilla ya te diferencia del 80% de los masajistas.</span>
-          <span class="task-tool">🌐 Google Sites · Gratis · URL gratuita incluida</span>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-day">Semana 3</div>
-        <div class="task-content">
-          <strong>Sistema de referidos activo</strong>
-          <span>Implementar: "Por cada persona que me recomendás y toma una sesión, tu próxima sesión tiene un 10% de descuento." Comunicarlo a todos los clientes activos.</span>
-          <span class="task-tool">🤝 Referidos · Costo: solo el descuento</span>
-        </div>
-      </div>
-      <div class="task">
-        <div class="task-day">Semana 4</div>
-        <div class="task-content">
-          <strong>Empezar a vender packs activamente</strong>
-          <span>Después de la 2da sesión con un cliente, ofrecerle el pack x5. "Te reservo los turnos y además tenés descuento." Los packs son ingresos garantizados por adelantado.</span>
-          <span class="task-tool">📦 Oferta directa · Post-sesión</span>
-        </div>
-      </div>
+
+    <h3>Mensaje automático WhatsApp Business (fuera de horario)</h3>
+    <div class="message-box" data-label="WHATSAPP BUSINESS · RESPUESTA AUTOMÁTICA">
+      <p>"¡Hola! Soy Carlos de Senda Masajes 🌿 En este momento no estoy disponible, pero te respondo a la brevedad. Si
+        querés saber más sobre mis servicios y precios, escribime y te cuento todo. Masajes a domicilio en Zona Norte y
+        CABA — llevo todo yo, vos no te movés. ¡Hasta pronto!"</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-divider"></div>
+  <!-- ============================= -->
+  <!-- SECCIÓN 6: HERRAMIENTAS       -->
+  <!-- ============================= -->
+  <section class="tools-section">
+    <div class="section-inner">
+      <div class="section-num">06 · Herramientas Gratuitas</div>
+      <h2>Tu negocio digital<br><em>sin gastar un peso</em></h2>
+      <p>Cada herramienta tiene un propósito concreto. No necesitás todas desde el día uno — seguí el orden del plan de
+        acción.</p>
 
-<!-- ============================= -->
-<!-- SECCIÓN 5: TEXTOS LISTOS      -->
-<!-- ============================= -->
-<section class="section">
-  <div class="section-num">05 · Textos Listos para Copiar</div>
-  <h2>Palabras que<br><em>consiguen clientes</em></h2>
-  <p>Copiá y mandá. Cada texto está pensado para generar una respuesta, no solo para informar.</p>
-
-  <h3>Mensaje para Contactos Anteriores (WhatsApp)</h3>
-  <div class="message-box" data-label="WHATSAPP · CONTACTOS VIEJOS">
-    <p>"Hola [nombre], ¿cómo estás? Te escribo porque retomé los masajes de manera profesional. Estoy ofreciendo masajes a domicilio en zona norte y CABA — llego con todo, vos no te movés de casa. Hago relajante, descontracturante y con bambú. Si te interesa o conocés a alguien que lo necesite, avisame. Un abrazo, Carlos de Senda Masajes."</p>
-  </div>
-
-  <h3>Post de Lanzamiento Instagram</h3>
-  <div class="message-box" data-label="INSTAGRAM · POST LANZAMIENTO">
-    <p>"Llegó el momento de que el bienestar llegue a tu puerta. 🌿 Soy Carlos, masajista profesional recibido en 2006. Masajes relajantes, descontracturantes y con bambú — directamente en tu casa, en Zona Norte y CABA. No necesitás manejar, no necesitás apurarte. Yo llevo todo. 🎋 También para parejas: los dos en su casa, una experiencia completa. Turnos por WhatsApp 👇 ¿Cuándo arrancamos? #masajesadomicilio #masajesnorte #masajessanisidro #masajesnordelta #masajesmartinez #masajesCABA #bienestar #relajacion #descontracturante"</p>
-  </div>
-
-  <h3>Mensaje para Grupos de Facebook / Vecinos</h3>
-  <div class="message-box" data-label="FACEBOOK GRUPOS · ZONA NORTE">
-    <p>"Hola comunidad! Soy Carlos, masajista profesional (recibido 2006). Ofrezco masajes a domicilio en Zona Norte y CABA — llevo camilla y todos los elementos. Relajante, descontracturante y con bambú. También para parejas en casa (1 sola visita, masaje para los dos). Zona sin cargo: San Isidro, Martínez, Olivos, Vicente López. Nordelta, Tigre y CABA también. Precios y disponibilidad por WhatsApp. ¡Saludos a todos!"</p>
-  </div>
-
-  <h3>Mensaje automático WhatsApp Business (fuera de horario)</h3>
-  <div class="message-box" data-label="WHATSAPP BUSINESS · RESPUESTA AUTOMÁTICA">
-    <p>"¡Hola! Soy Carlos de Senda Masajes 🌿 En este momento no estoy disponible, pero te respondo a la brevedad. Si querés saber más sobre mis servicios y precios, escribime y te cuento todo. Masajes a domicilio en Zona Norte y CABA — llevo todo yo, vos no te movés. ¡Hasta pronto!"</p>
-  </div>
-</section>
-
-<!-- ============================= -->
-<!-- SECCIÓN 6: HERRAMIENTAS       -->
-<!-- ============================= -->
-<section class="tools-section">
-  <div class="section-inner">
-    <div class="section-num">06 · Herramientas Gratuitas</div>
-    <h2>Tu negocio digital<br><em>sin gastar un peso</em></h2>
-    <p>Cada herramienta tiene un propósito concreto. No necesitás todas desde el día uno — seguí el orden del plan de acción.</p>
-
-    <div class="tool-grid">
-      <div class="tool-item">
-        <div class="tool-icon">📱</div>
-        <div>
-          <div class="tool-name">WhatsApp Business</div>
-          <p class="tool-desc">Tu canal de ventas principal. Respuestas automáticas, catálogo de servicios, estado profesional. El 90% de tus turnos van a venir por acá.</p>
-          <span class="tool-badge">PRIORIDAD 1</span>
+      <div class="tool-grid">
+        <div class="tool-item">
+          <div class="tool-icon">📱</div>
+          <div>
+            <div class="tool-name">WhatsApp Business</div>
+            <p class="tool-desc">Tu canal de ventas principal. Respuestas automáticas, catálogo de servicios, estado
+              profesional. El 90% de tus turnos van a venir por acá.</p>
+            <span class="tool-badge">PRIORIDAD 1</span>
+          </div>
         </div>
-      </div>
-      <div class="tool-item">
-        <div class="tool-icon">📸</div>
-        <div>
-          <div class="tool-name">Instagram @sendamasajes</div>
-          <p class="tool-desc">Tu vidriera visual. Reels de 30 segundos mostrando la experiencia a domicilio. Hashtags geográficos para aparecer en búsquedas locales.</p>
-          <span class="tool-badge">PRIORIDAD 1</span>
+        <div class="tool-item">
+          <div class="tool-icon">📸</div>
+          <div>
+            <div class="tool-name">Instagram @sendamasaje</div>
+            <p class="tool-desc">Tu vidriera visual. Reels de 30 segundos mostrando la experiencia a domicilio. Hashtags
+              geográficos para aparecer en búsquedas locales.</p>
+            <span class="tool-badge">PRIORIDAD 1</span>
+          </div>
         </div>
-      </div>
-      <div class="tool-item">
-        <div class="tool-icon">🗺️</div>
-        <div>
-          <div class="tool-name">Google Business Profile</div>
-          <p class="tool-desc">Cuando alguien busca "masajista a domicilio San Isidro" en Google, vos aparecés. Completamente gratuito y muy pocos masajistas lo usan bien.</p>
-          <span class="tool-badge">PRIORIDAD 1</span>
+        <div class="tool-item">
+          <div class="tool-icon">🗺️</div>
+          <div>
+            <div class="tool-name">Google Business Profile</div>
+            <p class="tool-desc">Cuando alguien busca "masajista a domicilio San Isidro" en Google, vos aparecés.
+              Completamente gratuito y muy pocos masajistas lo usan bien.</p>
+            <span class="tool-badge">PRIORIDAD 1</span>
+          </div>
         </div>
-      </div>
-      <div class="tool-item">
-        <div class="tool-icon">🎨</div>
-        <div>
-          <div class="tool-name">Canva</div>
-          <p class="tool-desc">Para crear flyers, historias de Instagram y posts con el logo SENDA. Tiene plantillas de spa y bienestar. Versión gratuita es suficiente.</p>
-          <span class="tool-badge">PRIORIDAD 2</span>
+        <div class="tool-item">
+          <div class="tool-icon">🎨</div>
+          <div>
+            <div class="tool-name">Canva</div>
+            <p class="tool-desc">Para crear flyers, historias de Instagram y posts con el logo SENDA. Tiene plantillas
+              de spa y bienestar. Versión gratuita es suficiente.</p>
+            <span class="tool-badge">PRIORIDAD 2</span>
+          </div>
         </div>
-      </div>
-      <div class="tool-item">
-        <div class="tool-icon">💳</div>
-        <div>
-          <div class="tool-name">MercadoPago</div>
-          <p class="tool-desc">Cobrar con QR, link de pago o transferencia. Esencial para recibir señas que confirmen turnos y eliminen los clientes que no aparecen.</p>
-          <span class="tool-badge">PRIORIDAD 2</span>
+        <div class="tool-item">
+          <div class="tool-icon">💳</div>
+          <div>
+            <div class="tool-name">MercadoPago</div>
+            <p class="tool-desc">Cobrar con QR, link de pago o transferencia. Esencial para recibir señas que confirmen
+              turnos y eliminen los clientes que no aparecen.</p>
+            <span class="tool-badge">PRIORIDAD 2</span>
+          </div>
         </div>
-      </div>
-      <div class="tool-item">
-        <div class="tool-icon">🔗</div>
-        <div>
-          <div class="tool-name">Linktree (linktr.ee)</div>
-          <p class="tool-desc">Un link en el bio de Instagram que lleva a WhatsApp, Google Maps y precios. Convierte visitas de Instagram en consultas reales.</p>
-          <span class="tool-badge">PRIORIDAD 2</span>
+        <div class="tool-item">
+          <div class="tool-icon">🔗</div>
+          <div>
+            <div class="tool-name">Linktree (linktr.ee)</div>
+            <p class="tool-desc">Un link en el bio de Instagram que lleva a WhatsApp, Google Maps y precios. Convierte
+              visitas de Instagram en consultas reales.</p>
+            <span class="tool-badge">PRIORIDAD 2</span>
+          </div>
         </div>
-      </div>
-      <div class="tool-item">
-        <div class="tool-icon">🌐</div>
-        <div>
-          <div class="tool-name">Google Sites</div>
-          <p class="tool-desc">Tu primera web gratis. URL del tipo: sites.google.com/sendamasajes. Subís los servicios, precios, fotos y el botón de WhatsApp. Simple pero profesional.</p>
-          <span class="tool-badge">PRIORIDAD 3</span>
+        <div class="tool-item">
+          <div class="tool-icon">🌐</div>
+          <div>
+            <div class="tool-name">Google Sites</div>
+            <p class="tool-desc">Tu primera web gratis. URL del tipo: sites.google.com/sendamasaje. Subís los servicios,
+              precios, fotos y el botón de WhatsApp. Simple pero profesional.</p>
+            <span class="tool-badge">PRIORIDAD 3</span>
+          </div>
         </div>
-      </div>
-      <div class="tool-item">
-        <div class="tool-icon">📊</div>
-        <div>
-          <div class="tool-name">Google Sheets (Excel gratis)</div>
-          <p class="tool-desc">Registro de clientes: nombre, teléfono, fecha, tipo de masaje, zona. Te permite hacer seguimiento y ofrecer el pack en el momento justo.</p>
-          <span class="tool-badge">PRIORIDAD 3</span>
+        <div class="tool-item">
+          <div class="tool-icon">📊</div>
+          <div>
+            <div class="tool-name">Google Sheets (Excel gratis)</div>
+            <p class="tool-desc">Registro de clientes: nombre, teléfono, fecha, tipo de masaje, zona. Te permite hacer
+              seguimiento y ofrecer el pack en el momento justo.</p>
+            <span class="tool-badge">PRIORIDAD 3</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================= -->
-<!-- SECCIÓN 7: POLÍTICAS          -->
-<!-- ============================= -->
-<section class="section">
-  <div class="section-num">07 · Políticas Operativas</div>
-  <h2>Reglas del juego<br><em>desde el primer turno</em></h2>
-  <p>Establecer estas políticas desde el principio te protege a vos y genera confianza en el cliente. Comunicarlas con naturalidad, sin sonar rígido.</p>
+  <!-- ============================= -->
+  <!-- SECCIÓN 7: POLÍTICAS          -->
+  <!-- ============================= -->
+  <section class="section">
+    <div class="section-num">07 · Políticas Operativas</div>
+    <h2>Reglas del juego<br><em>desde el primer turno</em></h2>
+    <p>Establecer estas políticas desde el principio te protege a vos y genera confianza en el cliente. Comunicarlas con
+      naturalidad, sin sonar rígido.</p>
 
-  <div class="policy-grid">
-    <div class="policy-item">
-      <div class="policy-title">Confirmación de Turno</div>
-      <p class="policy-text">Seña del 30-50% por transferencia o MercadoPago. Sin seña, no hay turno reservado.</p>
+    <div class="policy-grid">
+      <div class="policy-item">
+        <div class="policy-title">Confirmación de Turno</div>
+        <p class="policy-text">Seña del 30-50% por transferencia o MercadoPago. Sin seña, no hay turno reservado.</p>
+      </div>
+      <div class="policy-item">
+        <div class="policy-title">Cancelaciones</div>
+        <p class="policy-text">Con más de 24 hs: seña se acredita para próximo turno. Con menos de 24 hs: seña no se
+          devuelve.</p>
+      </div>
+      <div class="policy-item">
+        <div class="policy-title">Público Objetivo</div>
+        <p class="policy-text">Parejas (hombre-mujer), mujeres solas, hombres por recomendación personal únicamente.</p>
+      </div>
+      <div class="policy-item">
+        <div class="policy-title">Puntualidad</div>
+        <p class="policy-text">Llegada 10 min antes para armar camilla sin apuro. Si el cliente demoró, la sesión no se
+          extiende.</p>
+      </div>
+      <div class="policy-item">
+        <div class="policy-title">Zona y Adicional</div>
+        <p class="policy-text">Zona núcleo sin cargo extra. Más de 25 km: $2.000 por km adicional o traslado a acordar.
+        </p>
+      </div>
+      <div class="policy-item">
+        <div class="policy-title">Post-Sesión</div>
+        <p class="policy-text">Mensaje al día siguiente preguntando cómo se sintió. Esto fideliza y genera
+          recomendaciones.</p>
+      </div>
     </div>
-    <div class="policy-item">
-      <div class="policy-title">Cancelaciones</div>
-      <p class="policy-text">Con más de 24 hs: seña se acredita para próximo turno. Con menos de 24 hs: seña no se devuelve.</p>
-    </div>
-    <div class="policy-item">
-      <div class="policy-title">Público Objetivo</div>
-      <p class="policy-text">Parejas (hombre-mujer), mujeres solas, hombres por recomendación personal únicamente.</p>
-    </div>
-    <div class="policy-item">
-      <div class="policy-title">Puntualidad</div>
-      <p class="policy-text">Llegada 10 min antes para armar camilla sin apuro. Si el cliente demoró, la sesión no se extiende.</p>
-    </div>
-    <div class="policy-item">
-      <div class="policy-title">Zona y Adicional</div>
-      <p class="policy-text">Zona núcleo sin cargo extra. Más de 25 km: $2.000 por km adicional o traslado a acordar.</p>
-    </div>
-    <div class="policy-item">
-      <div class="policy-title">Post-Sesión</div>
-      <p class="policy-text">Mensaje al día siguiente preguntando cómo se sintió. Esto fideliza y genera recomendaciones.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-divider"></div>
+  <div class="section-divider"></div>
 
-<!-- ============================= -->
-<!-- SECCIÓN 8: PROYECCIÓN         -->
-<!-- ============================= -->
-<section class="section">
-  <div class="section-num">08 · Proyección Realista</div>
-  <h2>De cero a<br><em>agenda llena</em></h2>
-  <p>Sin gastar en publicidad, enfocándose en referidos, Instagram local y Google, esta es una proyección conservadora:</p>
+  <!-- ============================= -->
+  <!-- SECCIÓN 8: PROYECCIÓN         -->
+  <!-- ============================= -->
+  <section class="section">
+    <div class="section-num">08 · Proyección Realista</div>
+    <h2>De cero a<br><em>agenda llena</em></h2>
+    <p>Sin gastar en publicidad, enfocándose en referidos, Instagram local y Google, esta es una proyección
+      conservadora:</p>
 
-  <div class="identity-grid">
-    <div class="identity-card">
-      <h4>Mes 1 — Arranque</h4>
-      <div class="value">6–8 sesiones</div>
-      <p>Primeras semanas. Contactos anteriores + 2 ó 3 parejas. Ingresos estimados: $300.000 – $400.000</p>
+    <div class="identity-grid">
+      <div class="identity-card">
+        <h4>Mes 1 — Arranque</h4>
+        <div class="value">6–8 sesiones</div>
+        <p>Primeras semanas. Contactos anteriores + 2 ó 3 parejas. Ingresos estimados: $300.000 – $400.000</p>
+      </div>
+      <div class="identity-card">
+        <h4>Mes 2–3 — Crecimiento</h4>
+        <div class="value">12–15 sesiones</div>
+        <p>Google empieza a funcionar, Instagram suma seguidores locales. Ingresos: $550.000 – $700.000</p>
+      </div>
+      <div class="identity-card">
+        <h4>Mes 4–5 — Consolidado</h4>
+        <div class="value">20+ sesiones</div>
+        <p>Referidos activos, primeras reseñas en Google, packs vendidos. Ingresos: $900.000+</p>
+      </div>
+      <div class="identity-card">
+        <h4>La palanca: Parejas</h4>
+        <div class="value">$80.000 = 1 salida</div>
+        <p>3 salidas para parejas por semana = $960.000 solo en ese segmento. Priorizar siempre este servicio.</p>
+      </div>
     </div>
-    <div class="identity-card">
-      <h4>Mes 2–3 — Crecimiento</h4>
-      <div class="value">12–15 sesiones</div>
-      <p>Google empieza a funcionar, Instagram suma seguidores locales. Ingresos: $550.000 – $700.000</p>
-    </div>
-    <div class="identity-card">
-      <h4>Mes 4–5 — Consolidado</h4>
-      <div class="value">20+ sesiones</div>
-      <p>Referidos activos, primeras reseñas en Google, packs vendidos. Ingresos: $900.000+</p>
-    </div>
-    <div class="identity-card">
-      <h4>La palanca: Parejas</h4>
-      <div class="value">$80.000 = 1 salida</div>
-      <p>3 salidas para parejas por semana = $960.000 solo en ese segmento. Priorizar siempre este servicio.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================= -->
-<!-- FOOTER                        -->
-<!-- ============================= -->
-<footer>
-  <div class="logo-name-sm">SENDA</div>
-  <div style="width:60px;height:1px;background:var(--oro);margin:20px auto;opacity:0.5;"></div>
-  <p>MASAJES A DOMICILIO · ZONA NORTE & CABA · CARLOS · MASAJISTA PROFESIONAL DESDE 2006</p>
-  <p style="margin-top:8px;">Kit de Lanzamiento · Versión 1.0 · 2025</p>
-</footer>
+  <!-- ============================= -->
+  <!-- FOOTER                        -->
+  <!-- ============================= -->
+  <footer>
+    <div class="logo-name-sm">SENDA</div>
+    <div style="width:60px;height:1px;background:var(--oro);margin:20px auto;opacity:0.5;"></div>
+    <p>MASAJES A DOMICILIO · ZONA NORTE & CABA · CARLOS · MASAJISTA PROFESIONAL DESDE 2006</p>
+    <p style="margin-top:8px;">Kit de Lanzamiento · Versión 1.0 · 2025</p>
+  </footer>
 
 </body>
+
 </html>
